@@ -16,7 +16,14 @@ There was a recent paper by Acuna et al that received a lot of attention on Twit
 
 ```
 library(rAltmetric)
-acuna <- metrics('10.1038/489201a')
+acuna <- altmetrics('10.1038/489201a')
+> acuna
+Altmetrics on: "Future impact: Predicting scientific success" with doi 10.1038/489201a (altmetric_id: 942310) published in Nature.
+
+> plot(acuna)
+```
+
+![stats for Acuna's paper](https://raw.github.com/ropensci/rAltmetric/master/acuna.png)
 
 
 Questions, comments, features requests and issues should go [here](https://github.com/ropensci/rAltmetric/issues/)
