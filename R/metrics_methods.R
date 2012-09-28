@@ -18,7 +18,7 @@ print.altmetric <- function(alt_obj) {
     stats <- melt(alt_obj[grep("^cited", names(alt_obj))])
 stats$names <- unname(sapply(stats$L1, return_prov))
 stats$names <- factor(stats$names, levels = stats$names[rev(order(stats$value))])
- print(stats)
+ print(stats[, -2])
 }
 
 
