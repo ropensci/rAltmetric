@@ -18,14 +18,15 @@ There was a recent paper by Acuna et al that received a lot of attention on Twit
 ```r
 library(rAltmetric)
 acuna <- altmetrics('10.1038/489201a')
-> acuna
+ acuna
 Altmetrics on: "Future impact: Predicting scientific success" with doi 10.1038/489201a (altmetric_id: 942310) published in Nature.
-  value                      L1    names
-1     8    cited_by_feeds_count    Feeds
-2     1    cited_by_gplus_count  Google+
-3   170    cited_by_posts_count    Cited
-4   154 cited_by_tweeters_count   Tweets
-5   163 cited_by_accounts_count Accounts
+  value    names
+1     8    Feeds
+2     1  Google+
+3   170    Cited
+4   154   Tweets
+5   163 Accounts
+
 ```
 
 
