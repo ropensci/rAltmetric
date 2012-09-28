@@ -3,18 +3,19 @@
 
 This package provides a way to programmatically query and analyze data from [altmetric.com](http://altmetric.com) for metrics on any publication. The package is pretty straightforward and has only a single function to download metrics. It also includes generic S3 methods to visualize the data.
 
-## Installing the package
+# Installing the package
 
 ```r
 # If you don't already have the devtools library, run
-# install.packages('devtools')
+install.packages('devtools')
+
 library(devtools)
 install_github('rAltmetric', 'ropensci')
 ```
 
-## Quick Tutorial
+# Quick Tutorial
 
-### Obtaining metrics
+## Obtaining metrics
 There was a recent paper by Acuna et al that received a lot of attention on Twitter. What was the impact of that paper?
 
 ```r
@@ -32,7 +33,8 @@ Altmetrics on: "Future impact: Predicting scientific success" with doi 10.1038/4
 ```
 
 
-### Data
+## Data
+To obtain the metrics in tabular form for further processing, run any object of class through `altmetric_data()` to get data that can easily be written to disk as a spreadsheet.
 
 ```r
 > altmetric_data(acuna)
@@ -80,13 +82,15 @@ acuna_data <- altmetric_data(acuna)
 write.csv(acuna_data, file = 'acuna_altmetrics.csv')
 ```
 
-### Visualization
+## Visualization
+For any altmetric object you can quickly visualize the statistics with a generic plot function. The plot overlays the Altmetric donut on top. If you prefer a customized plot, just work with the raw data generated from `almetric_data()`
 
 ```
 > plot(acuna)
 ```
 
 ![stats for Acuna's paper](https://raw.github.com/ropensci/rAltmetric/master/acuna.png)
+
 
 
 Questions, comments, features requests and issues should go [here](https://github.com/ropensci/rAltmetric/issues/)
