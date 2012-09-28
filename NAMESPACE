@@ -1,3 +1,4 @@
 S3method(plot,altmetric)
 S3method(print,altmetric)
+export(altmetric_data)
 export(altmetrics)

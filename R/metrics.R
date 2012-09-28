@@ -36,3 +36,24 @@ altmetrics <- function(doi = NA, apikey = NULL, curl = getCurlHandle(), ...) {
     return(res)
 }
 }
+
+#' Returns a data frame of metrics for a paper
+#'
+#' @param alt altmetrics object
+#' @export
+#' @return data.frame
+#' @examples \dontrun{
+#' altmetric_data(altmetrics('10.1038/489201a'))
+#'}
+altmetric_data <- function(alt) {
+return_prov <- function(provider) {
+	services <- data.frame(type = c("cited_by_gplus_count", "cited_by_fbwalls_count", "cited_by_posts_count", "cited_by_tweeters_count", "cited_by_accounts_count", "cited_by_feeds_count", "cited_by_rdts_count", "cited_by_msm_count", "cited_by_delicious_count", "cited_by_forum_count", "cited_by_qs_count"), names = c("Google+", "Facebook", "Cited", "Tweets", "Accounts", "Feeds", "Reddit", "MSM", "Delicious", "Forums", "QS"))
+
+	return(services$names[which(services$type == provider)])
+}
+
+stats <- melt(alt[grep("^cited", names(alt))])
+stats$names <- unname(sapply(stats$L1, return_prov))
+stats$names <- factor(stats$names, levels = stats$names[rev(order(stats$value))])
+return(data.frame(names = stats[, 3], counts = stats[ , 1]))
+}

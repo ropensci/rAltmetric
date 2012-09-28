@@ -12,6 +12,7 @@ install_github('rAltmetric', 'ropensci')
 
 ## Quick Tutorial
 
+### Obtaining metrics
 There was a recent paper by Acuna et al that received a lot of attention on Twitter. What was the impact of that paper?
 
 ```r
@@ -25,8 +26,24 @@ Altmetrics on: "Future impact: Predicting scientific success" with doi 10.1038/4
 3   170    cited_by_posts_count    Cited
 4   154 cited_by_tweeters_count   Tweets
 5   163 cited_by_accounts_count Accounts
+```
 
 
+### Data
+
+```r
+> altmetric_data(acuna)
+     names counts
+1    Feeds      8
+2  Google+      1
+3    Cited    170
+4   Tweets    154
+5 Accounts    163
+```
+
+### Visualization
+
+```
 > plot(acuna)
 ```
 
