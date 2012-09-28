@@ -1,0 +1,17 @@
+Package: rAltmetric
+Type: Package
+Title: Retrieves altmerics data for any published paper from altmetrics.com
+Version: 1.0
+Date: 2012-09-12
+Author: Karthik Ram
+Maintainer: Karthik Ram <karthik.ram@gmail.com>
+Description: Programmatic interface to the Altmetric.com API.
+URL: https://github.com/ropensci/rAltmetric
+Bugs and Issues: https://github.com/ropensci/rAltmetric/issues/
+License: CC0
+Depends:
+    plyr,
+    RCurl,
+    RJSONIO
+Collate:
+    'metrics.R'
