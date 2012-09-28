@@ -14,7 +14,7 @@ install_github('rAltmetric', 'ropensci')
 
 There was a recent paper by Acuna et al that received a lot of attention on Twitter. What was the impact of that paper?
 
-```
+```r
 library(rAltmetric)
 acuna <- altmetrics('10.1038/489201a')
 > acuna
