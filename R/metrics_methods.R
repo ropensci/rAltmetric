@@ -1,19 +1,20 @@
 
 #' Print a summary for an altmetric object
 #' @method print altmetric
+#' @S3method print altmetric
 #' @param alt_obj An object of class \code{Altmetric}
 print.altmetric <- function(alt_obj) {
-
-return_prov <- function(provider) {
-	services <- data.frame(type = c("cited_by_gplus_count", "cited_by_fbwalls_count", "cited_by_posts_count", "cited_by_tweeters_count", "cited_by_accounts_count", "cited_by_feeds_count", "cited_by_rdts_count", "cited_by_msm_count", "cited_by_delicious_count", "cited_by_forum_count", "cited_by_qs_count"), names = c("Google+", "Facebook", "Cited", "Tweets", "Accounts", "Feeds", "Reddit", "MSM", "Delicious", "Forums", "QS"))
-
-	return(services$names[which(services$type == provider)])
-}
 
 	string <- "Altmetrics on: \"%s\" with doi %s (altmetric_id: %s) published in %s."
     vals   <- c(alt_obj$title, alt_obj$doi, alt_obj$altmetric_id, alt_obj$journal)
     cat(do.call(sprintf, as.list(c(string, vals))))
     cat("\n")
+    return_prov <- function(provider) {
+	services <- data.frame(type = c("cited_by_gplus_count", "cited_by_fbwalls_count", "cited_by_posts_count", "cited_by_tweeters_count", "cited_by_accounts_count", "cited_by_feeds_count", "cited_by_rdts_count", "cited_by_msm_count", "cited_by_delicious_count", "cited_by_forum_count", "cited_by_qs_count"), names = c("Google+", "Facebook", "Cited", "Tweets", "Accounts", "Feeds", "Reddit", "MSM", "Delicious", "Forums", "QS"))
+
+	return(services$names[which(services$type == provider)])
+}
+
     stats <- melt(alt_obj[grep("^cited", names(alt_obj))])
 stats$names <- unname(sapply(stats$L1, return_prov))
 stats$names <- factor(stats$names, levels = stats$names[rev(order(stats$value))])
@@ -25,6 +26,7 @@ stats$names <- factor(stats$names, levels = stats$names[rev(order(stats$value))]
 #' Plots metrics for an altmetric object
 #' 
 #' @method plot altmetric
+#' @S3method plot altmetric
 #' @param alt_obj An object of class \code{Altmetric}
 plot.altmetric <- function(alt_obj) {
 
@@ -33,7 +35,7 @@ return_prov <- function(provider) {
 
 	return(services$names[which(services$type == provider)])
 }
-	
+
 stats <- melt(alt_obj[grep("^cited", names(alt_obj))])
 stats$names <- unname(sapply(stats$L1, return_prov))
 stats$names <- factor(stats$names, levels = stats$names[rev(order(stats$value))])
