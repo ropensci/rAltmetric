@@ -32,6 +32,7 @@ altmetrics <- function(doi = NA, apikey = NULL, curl = getCurlHandle(), ...) {
     	 message(sprintf("No metrics found on %s", doi))
     	} else {
     res <- fromJSON(metrics)
+    class(res) <- "altmetric"
     return(res)
 }
 }
