@@ -19,6 +19,13 @@ library(rAltmetric)
 acuna <- altmetrics('10.1038/489201a')
 > acuna
 Altmetrics on: "Future impact: Predicting scientific success" with doi 10.1038/489201a (altmetric_id: 942310) published in Nature.
+  value                      L1    names
+1     8    cited_by_feeds_count    Feeds
+2     1    cited_by_gplus_count  Google+
+3   170    cited_by_posts_count    Cited
+4   154 cited_by_tweeters_count   Tweets
+5   163 cited_by_accounts_count Accounts
+
 
 > plot(acuna)
 ```
