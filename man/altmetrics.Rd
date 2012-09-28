@@ -2,7 +2,7 @@
 \alias{altmetrics}
 \title{Grab altmetric data on any paper}
 \usage{
-  altmetrics(doi = NA, apikey = NULL,
+  altmetrics(doi = NA, apikey = getOption("altmetricKey"),
     curl = getCurlHandle(), ...)
 }
 \arguments{
@@ -12,7 +12,16 @@
   for this application is
   '37c9ae22b7979124ea650f3412255bf9' and you are free to
   use it. But if you start seeing rate limits, please
-  contact support at altmetric.com to get your own.}
+  contact support at altmetric.com to get your own.
+
+  Although the package comes with its own API key, once the
+  number of users increases, it is likely that you will
+  start hitting api limits. In that case, you should
+  contact support at altmetric.com and obtain your own. You
+  can specify your own key either inline OR, for
+  simplicity, add it to your .rprofile as follows.
+
+  option(altmetricKey = 'YOUR_KEY')}
 
   \item{curl}{passes on curl handle in a vectorized
   operation}

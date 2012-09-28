@@ -6,6 +6,8 @@ This package provides a way to programmatically query and analyze data from [alt
 ## Installing the package
 
 ```r
+# If you don't already have the devtools library, run
+# install.packages('devtools')
 library(devtools)
 install_github('rAltmetric', 'ropensci')
 ```
@@ -34,12 +36,48 @@ Altmetrics on: "Future impact: Predicting scientific success" with doi 10.1038/4
 
 ```r
 > altmetric_data(acuna)
-     names counts
-1    Feeds      8
-2  Google+      1
-3    Cited    170
-4   Tweets    154
-5 Accounts    163
+altmetric_data(acuna)
+                                         title
+1 Future impact: Predicting scientific success
+              doi   nlmid            altmetric_jid     issns
+1 10.1038/489201a 0410462 4f6fa50a3cf058f610003160 0028-0836
+  journal altmetric_id schema is_oa cited_by_feeds_count
+1  Nature       942310  1.5.4 FALSE                  173
+  cited_by_gplus_count cited_by_posts_count
+1                  173                  173
+  cited_by_tweeters_count cited_by_accounts_count   score
+1                     156                     166 184.598
+  mendeley connotea citeulike pub sci com doc
+1        0        0        11  62  84   6   8
+                                                                url
+1 http://www.nature.com/nature/journal/v489/n7415/full/489201a.html
+    added_on published_on subjects scopus_subjects
+1 1347471425   1347404400  science         General
+  last_updated readers_count X1 count_all count_journal
+1   1348828350            11  1    754555         13972
+  count_similar_age_1m count_similar_age_3m
+1                22408                56213
+  count_similar_age_journal_1m count_similar_age_journal_3m
+1                          508                         1035
+  rank_all rank_journal rank_similar_age_1m
+1   754043        13759               22339
+  rank_similar_age_3m rank_similar_age_journal_1m
+1               56074                         459
+  rank_similar_age_journal_3m pct_all pct_journal
+1                         947   99.93       98.48
+  pct_similar_age_1m pct_similar_age_3m
+1              99.69              99.75
+  pct_similar_age_journal_1m pct_similar_age_journal_3m
+1                      90.35                      91.50
+                                              details_url
+1 http://www.altmetric.com/details.php?citation_id=942310
+```
+
+You can save these data into a nice spreadsheet format:
+
+```
+acuna_data <- altmetric_data(acuna)
+write.csv(acuna_data, file = 'acuna_altmetrics.csv')
 ```
 
 ### Visualization
