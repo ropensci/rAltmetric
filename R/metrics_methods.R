@@ -37,6 +37,6 @@ donut <- readPNG(getURLContent(alt_obj$images[[2]]))
 # Now return a pretty plot
 ggplot(stats, aes(names, value)) + geom_point(size = 4, colour = 'steelblue') + ggtitle(alt_obj$title) + xlab("Provider") + ylab("Hits") + theme(panel.background = element_blank(), panel.grid.major = element_blank(),
         panel.grid.minor = element_blank(), panel.border = element_blank(),
-        axis.line = element_line(colour = "black")) + annotation_raster(donut, xmin = dim(stats)[1]-1, xmax = dim(stats)[1], ymin = max(stats$value)-60, ymax = max(stats$value), interpolate = T) + theme(title = element_text(family = "Helvetica", colour = "#0680b0", face="bold"), axis.text = element_text(family="Courier", colour = "#3f3f3f"), axis.title = element_text(colour="#3f3f3f")) 
+        axis.line = element_line(colour = "black")) + annotation_raster(donut, xmin = dim(stats)[1]-1, xmax = dim(stats)[1], ymin = max(stats$value)-(.2*max(stats$value)), ymax = max(stats$value), interpolate = T) + theme(title = element_text(family = "Helvetica", colour = "#0680b0", face="bold"), axis.text = element_text(family="Courier", colour = "#3f3f3f"), axis.title = element_text(colour="#3f3f3f")) 
 }
 

@@ -2,10 +2,10 @@
 \alias{altmetric_data}
 \title{Returns a data frame of metrics for a paper}
 \usage{
-  altmetric_data(alt)
+  altmetric_data(alt_obj)
 }
 \arguments{
-  \item{alt}{altmetrics object}
+  \item{alt_obj}{altmetrics object}
 }
 \value{
   data.frame
