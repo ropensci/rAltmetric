@@ -38,7 +38,6 @@ To obtain the metrics in tabular form for further processing, run any object of 
 
 ```r
 > altmetric_data(acuna)
-altmetric_data(acuna)
                                          title
 1 Future impact: Predicting scientific success
               doi   nlmid            altmetric_jid     issns
@@ -90,6 +89,30 @@ For any altmetric object you can quickly visualize the statistics with a generic
 ```
 
 ![stats for Acuna's paper](https://raw.github.com/ropensci/rAltmetric/master/acuna.png)
+
+# Gathering metrics for many DOIs
+For a real world use-case, one might want to get metrics on multiple publications. If so, just read them from a spreadsheet and `llply` through them like the example below.
+
+```
+# Be sure to update the path if the csv is not in your working dir
+doi_data <- read.csv('dois.csv', header = T)
+
+> doi_data
+                         doi
+1        10.1038/nature09210
+2    10.1126/science.1187820
+3 10.1016/j.tree.2011.01.009
+4             10.1086/664183
+
+
+library(plyr)
+# First, let's get the metrics
+raw_metrics <- llply(doi_data$doi, altmetrics, .progress = 'text')
+# Now let's pull the data together
+metric_data <- ldply(raw_metrics, altmetric_data)
+# Now save this to a spreadsheet for further analysis/vizualization
+save(metric_data, file = "metric_data.csv")
+```
 
 
 
