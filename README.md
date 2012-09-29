@@ -83,7 +83,7 @@ write.csv(acuna_data, file = 'acuna_altmetrics.csv')
 ```
 
 ## Visualization
-For any altmetric object you can quickly plot the stats with a generic `plot` function. The plot overlays the [Altmetric badge and the score](http://api.altmetric.com/embeds.html) on the top right corner. If you prefer a customized plot, create your own with the raw data generated from `almetric_data()`
+For any altmetric object you can quickly plot the stats with a generic `plot` function. The plot overlays the [altmetric badge and the score](http://api.altmetric.com/embeds.html) on the top right corner. If you prefer a customized plot, create your own with the raw data generated from `almetric_data()`
 
 ```r
 > plot(acuna)
@@ -121,4 +121,4 @@ Questions, features requests and issues should go [here](https://github.com/rope
 
 ## Further reading
 * [Metrics: Do metrics matter?](http://www.nature.com/news/2010/100616/full/465860a.html)
-* [The altmetrics manifesto](http://altmetrics.org/manifesto/)
+<!-- * [The altmetrics manifesto](http://altmetrics.org/manifesto/) -->
