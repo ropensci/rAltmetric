@@ -4,12 +4,9 @@
 #'
 #' This function will retrieve data from Altmetric.com on any paper with a doi.
 #' @param doi \code{doi} of a paper.
-#' @param  apikey An API key obtained from altmetric. The key for this application is '37c9ae22b7979124ea650f3412255bf9' and you are free to use it. But if you start seeing rate limits, please contact support at altmetric.com to get your own.
+#' @param  apikey An API key obtained from altmetric. The key for this application is '37c9ae22b7979124ea650f3412255bf9' and you are free to use it for academic non-commercial research. But if you start seeing rate limits, please contact support at altmetric.com to get your own.
 #'
-#' The function returns detailed metrics. For more information on all the fields returned by the function, see the API documentation: (\url{http://api.altmetric.com/docs/call_citations.html})
-#'
-#' option(altmetricKey = 'YOUR_KEY')
-#'
+#' The function returns detailed metrics. For more information on all the fields returned by the function, see the API documentation: (\url{http://api.altmetric.com/docs/call_citations.html}). If you get your own key, you can save it in your \code{.rprofile} as \code{options(altmetricKey="YOUR_KEY")}
 #' @param curl passes on curl handle in a vectorized operation
 #' @param ... additional parameters
 #' @export

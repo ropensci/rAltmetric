@@ -11,15 +11,17 @@
   \item{apikey}{An API key obtained from altmetric. The key
   for this application is
   '37c9ae22b7979124ea650f3412255bf9' and you are free to
-  use it. But if you start seeing rate limits, please
-  contact support at altmetric.com to get your own.
+  use it for academic non-commercial research. But if you
+  start seeing rate limits, please contact support at
+  altmetric.com to get your own.
 
   The function returns detailed metrics. For more
   information on all the fields returned by the function,
   see the API documentation:
-  (\url{http://api.altmetric.com/docs/call_citations.html})
-
-  option(altmetricKey = 'YOUR_KEY')}
+  (\url{http://api.altmetric.com/docs/call_citations.html}).
+  If you get your own key, you can save it in your
+  \code{.rprofile} as
+  \code{options(altmetricKey="YOUR_KEY")}}
 
   \item{curl}{passes on curl handle in a vectorized
   operation}

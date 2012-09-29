@@ -6,9 +6,10 @@ This package provides a way to programmatically retrieve altmetric data from [al
 # Installing the package
 
 ```r
-# If you don't already have the devtools library, run
+# If you don't already have the devtools library, first run
 install.packages('devtools')
 
+# then install the package
 library(devtools)
 install_github('rAltmetric', 'ropensci')
 ```
