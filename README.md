@@ -93,7 +93,7 @@ For any altmetric object you can quickly visualize the statistics with a generic
 # Gathering metrics for many DOIs
 For a real world use-case, one might want to get metrics on multiple publications. If so, just read them from a spreadsheet and `llply` through them like the example below.
 
-```
+```r
 # Be sure to update the path if the csv is not in your working dir
 doi_data <- read.csv('dois.csv', header = T)
 
