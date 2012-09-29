@@ -76,7 +76,7 @@ To obtain the metrics in tabular form for further processing, run any object of 
 
 You can save these data into a nice spreadsheet format:
 
-```
+```r
 acuna_data <- altmetric_data(acuna)
 write.csv(acuna_data, file = 'acuna_altmetrics.csv')
 ```
@@ -84,7 +84,7 @@ write.csv(acuna_data, file = 'acuna_altmetrics.csv')
 ## Visualization
 For any altmetric object you can quickly visualize the statistics with a generic plot function. The plot overlays the [Altmetric badge and the score](http://api.altmetric.com/embeds.html). If you prefer a customized plot, just work with the raw data generated from `almetric_data()`
 
-```
+```r
 > plot(acuna)
 ```
 
