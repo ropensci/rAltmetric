@@ -1,4 +1,4 @@
-doi_data <- read.csv('dois.csv', header = T)
+doi_data <- read.csv('~/Github/ropensci/rAltmetric/dois.csv', header = T)
 
 > doi_data
                          doi
@@ -12,8 +12,8 @@ library(plyr)
 # First, let's get the metrics
 raw_metrics <- llply(doi_data$doi, altmetrics, .progress = 'text')
 # Now let's pull the data together
-metric_data <- llply(raw_metrics, altmetric_data)
-
+metric_data <- ldply(raw_metrics, altmetric_data)
+# Now save this to a spreadsheet for further analysis/vizualization
 dim(altmetric_data(raw_metrics[[1]]))
 dim(altmetric_data(raw_metrics[[2]]))
 dim(altmetric_data(raw_metrics[[3]]))
