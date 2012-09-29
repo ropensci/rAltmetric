@@ -75,7 +75,7 @@ To obtain the metrics in tabular form for further processing, run any object of 
 1 http://www.altmetric.com/details.php?citation_id=942310
 ```
 
-You can save these data into a nice spreadsheet format:
+You can save these data into a clean spreadsheet format:
 
 ```r
 acuna_data <- altmetric_data(acuna)
@@ -83,7 +83,7 @@ write.csv(acuna_data, file = 'acuna_altmetrics.csv')
 ```
 
 ## Visualization
-For any altmetric object you can quickly visualize the statistics with a generic plot function. The plot overlays the [Altmetric badge and the score](http://api.altmetric.com/embeds.html). If you prefer a customized plot, just work with the raw data generated from `almetric_data()`
+For any altmetric object you can quickly plot the stats with a generic `plot` function. The plot overlays the [Altmetric badge and the score](http://api.altmetric.com/embeds.html) on the top right corner. If you prefer a customized plot, create your own with the raw data generated from `almetric_data()`
 
 ```r
 > plot(acuna)
@@ -96,7 +96,7 @@ For a real world use-case, one might want to get metrics on multiple publication
 
 ```r
 # Be sure to update the path if the example csv is not in your working dir
-doi_data <- read.csv('dois.csv', header = T)
+doi_data <- read.csv('dois.csv', header = TRUE)
 
 > doi_data
                          doi
@@ -107,7 +107,7 @@ doi_data <- read.csv('dois.csv', header = T)
 
 
 library(plyr)
-# First, let's get the metrics.
+# First, let's retrieve the metrics.
 raw_metrics <- llply(doi_data$doi, altmetrics, .progress = 'text')
 # Now let's pull the data together.
 metric_data <- ldply(raw_metrics, altmetric_data)
@@ -117,4 +117,8 @@ write.csv(metric_data, file = "metric_data.csv")
 
 
 
-Questions, features requests and issues should go [here](https://github.com/ropensci/rAltmetric/issues/). General comments to [karthik.ram@gmail.com](mailto:karthik.ram@gmail.com) The package is early in development so bug reports are most welcome.
+Questions, features requests and issues should go [here](https://github.com/ropensci/rAltmetric/issues/). General comments to [karthik.ram@gmail.com](mailto:karthik.ram@gmail.com). The package is early in development so bug reports are most welcome.
+
+## Further reading
+* [Metrics: Do metrics matter?](http://www.nature.com/news/2010/100616/full/465860a.html)
+* [The altmetrics manifesto](http://altmetrics.org/manifesto/)
