@@ -4,6 +4,7 @@
 #' @S3method print altmetric
 #' @param alt_obj An object of class \code{Altmetric}
 print.altmetric <- function(alt_obj) {
+    value <- NA
 
 	string <- "Altmetrics on: \"%s\" with doi %s (altmetric_id: %s) published in %s."
     vals   <- c(alt_obj$title, alt_obj$doi, alt_obj$altmetric_id, alt_obj$journal)
@@ -13,7 +14,8 @@ print.altmetric <- function(alt_obj) {
     stats <- melt(alt_obj[grep("^cited", names(alt_obj))])
     stats$names <- unname(sapply(stats$L1, return_provider))
     stats$names <- factor(stats$names, levels = stats$names[rev(order(stats$value))])
-    print(stats[, -2])
+    
+    print( data.frame(provider = stats$names, count = stats$value))
 }
 
 
@@ -24,6 +26,9 @@ print.altmetric <- function(alt_obj) {
 #' @S3method plot altmetric
 #' @param alt_obj An object of class \code{Altmetric}
 plot.altmetric <- function(alt_obj) {
+
+value <- NA
+# just to trick check()    
 if (!is(alt_obj, "altmetric"))   
     stop("Not an altmetric object")
 

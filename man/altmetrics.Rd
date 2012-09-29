@@ -14,12 +14,10 @@
   use it. But if you start seeing rate limits, please
   contact support at altmetric.com to get your own.
 
-  Although the package comes with its own API key, once the
-  number of users increases, it is likely that you will
-  start hitting api limits. In that case, you should
-  contact support at altmetric.com and obtain your own. You
-  can specify your own key either inline OR, for
-  simplicity, add it to your .rprofile as follows.
+  The function returns detailed metrics. For more
+  information on all the fields returned by the function,
+  see the API documentation:
+  (\url{http://api.altmetric.com/docs/call_citations.html})
 
   option(altmetricKey = 'YOUR_KEY')}
 

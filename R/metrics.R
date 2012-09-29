@@ -6,7 +6,7 @@
 #' @param doi \code{doi} of a paper.
 #' @param  apikey An API key obtained from altmetric. The key for this application is '37c9ae22b7979124ea650f3412255bf9' and you are free to use it. But if you start seeing rate limits, please contact support at altmetric.com to get your own.
 #'
-#' Although the package comes with its own API key, once the number of users increases, it is likely that you will start hitting api limits. In that case, you should contact support at altmetric.com and obtain your own. You can specify your own key either inline OR, for simplicity, add it to your .rprofile as follows.
+#' The function returns detailed metrics. For more information on all the fields returned by the function, see the API documentation: (\url{http://api.altmetric.com/docs/call_citations.html})
 #'
 #' option(altmetricKey = 'YOUR_KEY')
 #'
@@ -21,15 +21,13 @@
 altmetrics <- function(doi = NA, apikey = getOption('altmetricKey'), curl = getCurlHandle(), ...) {
 	if(is.null(apikey))
 		apikey <- '37c9ae22b7979124ea650f3412255bf9'
+		# If you start hitting rate limits, email support@altmetric.com
+		# to get your own key.
 
     if(is.null(doi))
 		stop("No doi supplied", call.=FALSE)
 
-		args <- list(key = apikey)
 		url <- "http://api.altmetric.com/v1/doi/"
-		args$doi <- as.character(doi)
-
-	
 		url <- paste0(url, doi, "?key=", apikey)
         metrics <- getURL(url,  curl = curl)
    
@@ -51,12 +49,14 @@ altmetrics <- function(doi = NA, apikey = getOption('altmetricKey'), curl = getC
 #' altmetric_data(altmetrics('10.1038/489201a'))
 #'}
 altmetric_data <- function(alt_obj) {
-# Remove TQ
+value <- NA
+# Pull our readers and cohorts before squashing the list
 reader <- alt_obj$readers
 cohort <- alt_obj$cohorts
 alt_obj <- alt_obj[-which(names(alt_obj)=="readers")]
 alt_obj <- alt_obj[-which(names(alt_obj)=="cohorts")]
 
+# Remove TQ if it exists
 if("tq" %in% names(alt_obj)) {
    alt_obj <- alt_obj[-which(names(alt_obj)=="tq")]
 }
@@ -68,7 +68,7 @@ names(basic_stuff) <-  names(alt_obj)[1:10]
 basic_data <- data.frame(t(unlist(alt_obj[1:10])))
 basics <- rbind.fill(basic_stuff, basic_data)[-1, ]
 
-# Readers
+# Readers to data.frame
 readers <- unrowname(t(data.frame(reader)))
 cohorts <- data.frame("pub" = NA, "sci" = NA, "com" = NA, "doc" = NA)
 cohorts2 <- data.frame(unrowname(t(data.frame(cohort))))
@@ -80,12 +80,12 @@ cohorts <- rbind.fill(cohorts, cohorts2)[-1,]
 # more_metrics <- dcast(melt(context, id.var="type"), 1~variable+type)[, -1]
 # # 1, 18
 
-# Counts
+# Counts to data.frame
 stats_base <- data.frame("cited_by_gplus_count" =NA, "cited_by_fbwalls_count" =NA,"cited_by_posts_count" =NA, "cited_by_tweeters_count" =NA, "cited_by_accounts_count" =NA, "cited_by_feeds_count" =NA, "cited_by_rdts_count" =NA, "cited_by_msm_count" =NA, "cited_by_delicious_count" =NA, "cited_by_forum_count" = NA, "cited_by_qs_count" = NA, "cited_by_rh_count" = NA)
 stats <- melt(alt_obj[grep("^cited", names(alt_obj))])
-stats2 <- dcast(stats, 1~value+L1)[, -1]
-names(stats2) <- gsub("^[0-9]_","", names(stats2))
-stats3 <- rbind.fill(stats_base, stats2)[-1,]
+stats <- dcast(stats, 1~value+L1)[, -1]
+names(stats) <- gsub("^[0-9]_","", names(stats))
+stats <- rbind.fill(stats_base, stats)[-1,]
 # 1, 11
 
 alt_obj$subjects <- paste0(alt_obj$subjects, collapse='', sep=",")
@@ -101,19 +101,20 @@ if(length(alt_obj$published_on) ==0 || is.null(alt_obj$published_on)) {
 
 
 # Removing more_metrics for the time being
-# return(data.frame(basic_stuff, stats3,  score = alt_obj$score, readers, url = alt_obj$url, added_on = alt_obj$added_on, published_on = alt_obj$published_on, subjects = alt_obj$subjects, scopus_subjects = alt_obj$scopus_subjects, last_updated = alt_obj$last_updated, readers_count = alt_obj$readers_count, more_metrics, details_url = alt_obj$details_url))
+# return(data.frame(basic_stuff, stats,  score = alt_obj$score, readers, url = alt_obj$url, added_on = alt_obj$added_on, published_on = alt_obj$published_on, subjects = alt_obj$subjects, scopus_subjects = alt_obj$scopus_subjects, last_updated = alt_obj$last_updated, readers_count = alt_obj$readers_count, more_metrics, details_url = alt_obj$details_url))
 
- return(data.frame(basics, stats3,  score = alt_obj$score, readers, url = alt_obj$url, added_on = alt_obj$added_on, published_on = alt_obj$published_on, subjects = alt_obj$subjects, scopus_subjects = alt_obj$scopus_subjects, last_updated = alt_obj$last_updated, readers_count = alt_obj$readers_count, details_url = alt_obj$details_url))
+ return(data.frame(basics, stats,  score = alt_obj$score, readers, url = alt_obj$url, added_on = alt_obj$added_on, published_on = alt_obj$published_on, subjects = alt_obj$subjects, scopus_subjects = alt_obj$scopus_subjects, last_updated = alt_obj$last_updated, readers_count = alt_obj$readers_count, details_url = alt_obj$details_url))
            
 }
 
 
 
 
-#' Returns cleaner metric source names
+#' Returns cleaner metric source names (mostly for internal use)
 #'
 #' @param provider the data provider
 #' @export
+#' @keywords internal
 #' @examples \dontrun{
 #' return_provider('cited_by_gplus_count')
 #'}
