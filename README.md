@@ -21,7 +21,7 @@ There was a recent paper by Acuna et al that received a lot of attention on Twit
 ```r
 library(rAltmetric)
 acuna <- altmetrics('10.1038/489201a')
-> print.altmetric(acuna)
+> acuna
 Altmetrics on: "Future impact: Predicting scientific success" with doi 10.1038/489201a (altmetric_id: 942310) published in Nature.
   provider count
 1    Feeds     9
