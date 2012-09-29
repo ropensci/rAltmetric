@@ -117,4 +117,4 @@ write.csv(metric_data, file = "metric_data.csv")
 
 
 
-Questions, comments, features requests and issues should go [here](https://github.com/ropensci/rAltmetric/issues/). The package is early in development so bug reports are most welcome.
+Questions, features requests and issues should go [here](https://github.com/ropensci/rAltmetric/issues/). General comments to [karthik.ram@gmail.com](mailto:karthik.ram@gmail.com) The package is early in development so bug reports are most welcome.
