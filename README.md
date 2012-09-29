@@ -1,7 +1,7 @@
 ![altmetric.com](https://raw.github.com/ropensci/rAltmetric/master/altmetric_logo_title.png) 
 # rAltmetric
 
-This package provides a way to programmatically query and analyze data from [altmetric.com](http://altmetric.com) for metrics on any publication. The package is pretty straightforward and has only a single function to download metrics. It also includes generic S3 methods to visualize the data.
+This package provides a way to programmatically query and analyze data from [altmetric.com](http://altmetric.com) for metrics on any publication. The package is pretty straightforward and has one function to download metrics and another to extract the data into a data frame. It also includes generic S3 methods to visualize the data.
 
 # Installing the package
 
