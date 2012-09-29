@@ -21,14 +21,14 @@ There was a recent paper by Acuna et al that received a lot of attention on Twit
 ```r
 library(rAltmetric)
 acuna <- altmetrics('10.1038/489201a')
- acuna
+> print.altmetric(acuna)
 Altmetrics on: "Future impact: Predicting scientific success" with doi 10.1038/489201a (altmetric_id: 942310) published in Nature.
-  value    names
-1     8    Feeds
-2     1  Google+
-3   170    Cited
-4   154   Tweets
-5   163 Accounts
+  provider count
+1    Feeds     9
+2  Google+     1
+3    Cited   174
+4   Tweets   157
+5 Accounts   167
 
 ```
 
@@ -82,7 +82,7 @@ write.csv(acuna_data, file = 'acuna_altmetrics.csv')
 ```
 
 ## Visualization
-For any altmetric object you can quickly visualize the statistics with a generic plot function. The plot overlays the Altmetric donut on top. If you prefer a customized plot, just work with the raw data generated from `almetric_data()`
+For any altmetric object you can quickly visualize the statistics with a generic plot function. The plot overlays the [Altmetric badge and the score](http://api.altmetric.com/embeds.html). If you prefer a customized plot, just work with the raw data generated from `almetric_data()`
 
 ```
 > plot(acuna)
