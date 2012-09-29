@@ -111,7 +111,7 @@ raw_metrics <- llply(doi_data$doi, altmetrics, .progress = 'text')
 # Now let's pull the data together
 metric_data <- ldply(raw_metrics, altmetric_data)
 # Now save this to a spreadsheet for further analysis/vizualization
-save(metric_data, file = "metric_data.csv")
+write.csv(metric_data, file = "metric_data.csv")
 ```
 
 
