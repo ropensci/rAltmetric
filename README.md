@@ -34,7 +34,7 @@ Altmetrics on: "Future impact: Predicting scientific success" with doi 10.1038/4
 
 
 ## Data
-To obtain the metrics in tabular form for further processing, run any object of class through `altmetric_data()` to get data that can easily be written to disk as a spreadsheet.
+To obtain the metrics in tabular form for further processing, run any object of class `altmetric` through `altmetric_data()` to get data that can easily be written to disk as a spreadsheet.
 
 ```r
 > altmetric_data(acuna)
