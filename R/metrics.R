@@ -103,7 +103,7 @@ if(length(alt_obj$published_on) ==0 || is.null(alt_obj$published_on)) {
 # Removing more_metrics for the time being
 # return(data.frame(basic_stuff, stats3,  score = alt_obj$score, readers, url = alt_obj$url, added_on = alt_obj$added_on, published_on = alt_obj$published_on, subjects = alt_obj$subjects, scopus_subjects = alt_obj$scopus_subjects, last_updated = alt_obj$last_updated, readers_count = alt_obj$readers_count, more_metrics, details_url = alt_obj$details_url))
 
- return(data.frame(basic_stuff, stats3,  score = alt_obj$score, readers, url = alt_obj$url, added_on = alt_obj$added_on, published_on = alt_obj$published_on, subjects = alt_obj$subjects, scopus_subjects = alt_obj$scopus_subjects, last_updated = alt_obj$last_updated, readers_count = alt_obj$readers_count, details_url = alt_obj$details_url))
+ return(data.frame(basics, stats3,  score = alt_obj$score, readers, url = alt_obj$url, added_on = alt_obj$added_on, published_on = alt_obj$published_on, subjects = alt_obj$subjects, scopus_subjects = alt_obj$scopus_subjects, last_updated = alt_obj$last_updated, readers_count = alt_obj$readers_count, details_url = alt_obj$details_url))
            
 }
 
