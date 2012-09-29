@@ -1,7 +1,7 @@
 ![altmetric.com](https://raw.github.com/ropensci/rAltmetric/master/altmetric_logo_title.png) 
 # rAltmetric
 
-This package provides a way to programmatically query and analyze data from [altmetric.com](http://altmetric.com) for metrics on any publication. The package is pretty straightforward and has one function to download metrics and another to extract the data into a data frame. It also includes generic S3 methods to visualize the data.
+This package provides a way to programmatically retrieve altmetric data from [altmetric.com](http://altmetric.com) for any publication. The package is fairly straightforward with one function (`altmetrics()`) to download metrics and another (`altmetric_data()`) to extract the data into a data frame. It also includes generic S3 methods to plot metrics for any publication.
 
 # Installing the package
 
@@ -16,7 +16,7 @@ install_github('rAltmetric', 'ropensci')
 # Quick Tutorial
 
 ## Obtaining metrics
-There was a recent paper by Acuna et al that received a lot of attention on Twitter. What was the impact of that paper?
+There was a recent paper by [Acuna et al](http://www.nature.com/news/2010/100616/full/465860a.html) that received a lot of attention on Twitter. What was the impact of that paper?
 
 ```r
 library(rAltmetric)
