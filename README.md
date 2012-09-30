@@ -121,4 +121,4 @@ Questions, features requests and issues should go [here](https://github.com/rope
 
 ## Further reading
 * [Metrics: Do metrics matter?](http://www.nature.com/news/2010/100616/full/465860a.html)
-<!-- * [The altmetrics manifesto](http://altmetrics.org/manifesto/) -->
+* [The altmetrics manifesto](http://altmetrics.org/manifesto/) 
