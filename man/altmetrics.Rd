@@ -2,11 +2,28 @@
 \alias{altmetrics}
 \title{Grab altmetric data on any paper}
 \usage{
-  altmetrics(doi = NA, apikey = getOption("altmetricKey"),
+  altmetrics(oid = NULL, id = NULL, doi = NULL,
+    pmid = NULL, arXiv = NULL,
+    apikey = getOption("altmetricKey"),
     curl = getCurlHandle(), ...)
 }
 \arguments{
-  \item{doi}{\code{doi} of a paper.}
+  \item{oid}{\code{oid} Any object ID. Any general object
+  identifier as long as the prefix is "doi","pmid",
+  "arxiv", or "id".}
+
+  \item{id}{The Altmetric \code{id} of a paper. If
+  specifiying directly, the "id" prefix is not necessary.}
+
+  \item{doi}{The \code{doi} of a paper. If specifiying
+  directly, the "doi" prefix is not necessary.}
+
+  \item{pmid}{The \code{pmid} of a paper.If specifiying
+  directly, the "pmid" prefix is not necessary.}
+
+  \item{arXiv}{The \code{arxiv} ID of a paper.If
+  specifiying directly, the "arxiv" prefix is not
+  necessary.}
 
   \item{apikey}{An API key obtained from altmetric. The key
   for this application is
@@ -38,7 +55,12 @@
 \examples{
 \dontrun{
 altmetrics(doi ='10.1890/ES11-00339.1')
+Or specfiy the doi with the id
+altmetrics('doi/10.1890/ES11-00339.1')
 altmetrics(doi ='10.1038/480426a')
+Or specfiy the doi with the id
+You can do the same for other providers such as pmid, id, and arxiv
+altmetrics('doi/10.1038/480426a')
 }
 }
 

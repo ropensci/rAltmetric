@@ -6,8 +6,8 @@
 print.altmetric <- function(alt_obj) {
     value <- NA
 
-	string <- "Altmetrics on: \"%s\" with doi %s (altmetric_id: %s) published in %s."
-    vals   <- c(alt_obj$title, alt_obj$doi, alt_obj$altmetric_id, alt_obj$journal)
+	string <- "Altmetrics on: \"%s\" with altmetric_id: %s published in %s."
+    vals   <- c(alt_obj$title,  alt_obj$altmetric_id, alt_obj$journal)
     cat(do.call(sprintf, as.list(c(string, vals))))
     cat("\n")
 

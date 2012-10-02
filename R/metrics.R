@@ -7,7 +7,7 @@
 #' @param id The Altmetric \code{id} of a paper. If specifiying directly, the "id" prefix is not necessary.
 #' @param doi The \code{doi} of a paper. If specifiying directly, the "doi" prefix is not necessary.
 #' @param pmid The \code{pmid} of a paper.If specifiying directly, the "pmid" prefix is not necessary.
-#' @param arxiv The \code{arxiv} ID of a paper.If specifiying directly, the "arxiv" prefix is not necessary.
+#' @param arXiv The \code{arxiv} ID of a paper.If specifiying directly, the "arxiv" prefix is not necessary.
 #' @param  apikey An API key obtained from altmetric. The key for this application is '37c9ae22b7979124ea650f3412255bf9' and you are free to use it for academic non-commercial research. But if you start seeing rate limits, please contact support at altmetric.com to get your own.
 #'
 #' The function returns detailed metrics. For more information on all the fields returned by the function, see the API documentation: (\url{http://api.altmetric.com/docs/call_citations.html}). If you get your own key, you can save it in your \code{.rprofile} as \code{options(altmetricKey="YOUR_KEY")}
@@ -24,23 +24,23 @@
 #' You can do the same for other providers such as pmid, id, and arxiv
 #' altmetrics('doi/10.1038/480426a')
 #'}
-altmetrics <- function(oid = NULL, id = NULL, doi = NULL, pmid = NULL, arxiv = NULL, apikey = getOption('altmetricKey'), curl = getCurlHandle(), ...) {
+altmetrics <- function(oid = NULL, id = NULL, doi = NULL, pmid = NULL, arXiv = NULL, apikey = getOption('altmetricKey'), curl = getCurlHandle(), ...) {
 
 	if(is.null(apikey))
 		apikey <- '37c9ae22b7979124ea650f3412255bf9'
-		acceptable_identifiers <- c("doi", "arxiv", "id", "pmid")
+		acceptable_identifiers <- c("doi", "arXiv", "id", "pmid")
 		# If you start hitting rate limits, email support@altmetric.com
 		# to get your own key.
 
 		# If no object identifiers were specified, throw an error
-		if(is.null(oid) && is.null(id) && is.null(doi) && is.null(pmid) && is.null(arxiv))
+		if(is.null(oid) && is.null(id) && is.null(doi) && is.null(pmid) && is.null(arXiv))
 			stop("No valid identfier found. See ?altmetrics for more help", call.=FALSE)
 
 		# If an altmetric id is not prefixed by "id", add it in.
   	    if(!is.null(id)) {
   	    	prefix <- as.list((strsplit(id,'/'))[[1]])[[1]]
   	    	if(prefix!="id")
-  	    		id <- paste("id", "/", id)
+  	    		id <- paste0("id", "/", id)
   	    }
   	    # If an doi id is not prefixed by "id", add it in.
   	    if(!is.null(doi)) {
@@ -48,22 +48,21 @@ altmetrics <- function(oid = NULL, id = NULL, doi = NULL, pmid = NULL, arxiv = N
   	    	if(prefix!="doi")
   	    		doi <- paste0("doi", "/", doi)
   	    }
-  	    # If an arxiv id is not prefixed by "id", add it in.
-  	    if(!is.null(arxiv)) {
-  	    	prefix <- as.list((strsplit(arxiv,'/'))[[1]])[[1]]
-  	    	if(prefix!="arxiv")
-  	    		arxiv <- paste("arxiv", "/", arxiv)
+  	    # If an arXiv id is not prefixed by "arXiv", add it in.
+  	    if(!is.null(arXiv)) {
+  	    	prefix <- as.list((strsplit(arXiv,':|/'))[[1]])[[1]]
+  	    	arXiv <- paste0("arXiv", "/", as.list((strsplit(arXiv,':|/'))[[1]])[[2]])
   	    }
-  	    # If an pubmed id is not prefixed by "id", add it in.
+  	    # If an pubmed id is not prefixed by "pmid", add it in.
   	    if(!is.null(pmid)) {
   	    	prefix <- as.list((strsplit(pmid,'/'))[[1]])[[1]]
   	    	if(prefix!="pmid")
-  	    		pmid <- paste("pmid", "/", pmid)
+  	    		pmid <- paste0("pmid", "/", pmid)
   	    }
 
 
   	    # remove the identifiders that weren't specified
-   		identifiers <- compact(list(oid, id, doi, pmid, arxiv))
+   		identifiers <- compact(list(oid, id, doi, pmid, arXiv))
 
    		# If user specifies more than one at once, then throw an error
    		# Users should use lapply(object_list, altmetrics) 
@@ -73,18 +72,28 @@ altmetrics <- function(oid = NULL, id = NULL, doi = NULL, pmid = NULL, arxiv = N
 
   		if(!is.null(identifiers)) {
   				ids <- identifiers[[1]]
+
+          # Fix arXiv
+          test <- strsplit(ids, ":")
+          if(length(test[[1]])==2) {
+              ids <- paste0(as.list(strsplit(ids, ":")[[1]])[[1]], "/", as.list(strsplit(ids, ":")[[1]])[[2]])
+          }
+  					
  				supplied_id <-  as.character(as.list((strsplit(ids,'/'))[[1]])[[1]])
+ 				message(sprintf("%s", supplied_id))
  				if(!(supplied_id %in% acceptable_identifiers))
  						stop("Unknown identifier. Please use doi, pmid, arxiv or id (for altmetric id).", call.=F)
+ 						             
   		}
 
-
+  		# message(sprintf("%s", identifiers[[1]]))
 		url <- "http://api.altmetric.com/v1/"
-		url <- paste0(url,  identifiers[[1]], "?key=", apikey)
+		url <- paste0(url,  ids, "?key=", apikey)
+		# message(sprintf("%s", url))
         metrics <- getURL(url,  curl = curl)
    
    if(metrics == "Not Found") {
-    	 message(sprintf("No metrics found on %s", identifiers))
+    	 message(sprintf("No metrics found on %s", identifiers[[1]]))
     	 return(NULL)
     	} else {
     res <- fromJSON(metrics)
