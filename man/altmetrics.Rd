@@ -50,7 +50,9 @@
 }
 \description{
   This function will retrieve data from Altmetric.com on
-  any paper with a doi.
+  any paper with an appropriate object identifier.
+  Acceptable identifiers include dois, arXiv ids, pubmed
+  ids and altmetric ids.
 }
 \examples{
 \dontrun{

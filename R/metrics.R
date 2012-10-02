@@ -2,7 +2,7 @@
 
 #' Grab altmetric data on any paper
 #'
-#' This function will retrieve data from Altmetric.com on any paper with a doi.
+#' This function will retrieve data from Altmetric.com on any paper with an appropriate object identifier. Acceptable identifiers include dois, arXiv ids, pubmed ids and altmetric ids.
 #' @param oid \code{oid} Any object ID. Any general object identifier as long as the prefix is "doi","pmid", "arxiv", or "id".
 #' @param id The Altmetric \code{id} of a paper. If specifiying directly, the "id" prefix is not necessary.
 #' @param doi The \code{doi} of a paper. If specifiying directly, the "doi" prefix is not necessary.
@@ -39,13 +39,13 @@ altmetrics <- function(oid = NULL, id = NULL, doi = NULL, pmid = NULL, arXiv = N
 		# If an altmetric id is not prefixed by "id", add it in.
   	    if(!is.null(id)) {
   	    	prefix <- as.list((strsplit(id,'/'))[[1]])[[1]]
-  	    	if(prefix!="id")
+  	    	if(prefix != "id")
   	    		id <- paste0("id", "/", id)
   	    }
   	    # If an doi id is not prefixed by "id", add it in.
   	    if(!is.null(doi)) {
   	    	prefix <- as.list((strsplit(doi,'/'))[[1]])[[1]]
-  	    	if(prefix!="doi")
+  	    	if(prefix != "doi")
   	    		doi <- paste0("doi", "/", doi)
   	    }
   	    # If an arXiv id is not prefixed by "arXiv", add it in.
@@ -56,7 +56,7 @@ altmetrics <- function(oid = NULL, id = NULL, doi = NULL, pmid = NULL, arXiv = N
   	    # If an pubmed id is not prefixed by "pmid", add it in.
   	    if(!is.null(pmid)) {
   	    	prefix <- as.list((strsplit(pmid,'/'))[[1]])[[1]]
-  	    	if(prefix!="pmid")
+  	    	if(prefix != "pmid")
   	    		pmid <- paste0("pmid", "/", pmid)
   	    }
 
@@ -75,7 +75,7 @@ altmetrics <- function(oid = NULL, id = NULL, doi = NULL, pmid = NULL, arXiv = N
 
           # Fix arXiv
           test <- strsplit(ids, ":")
-          if(length(test[[1]])==2) {
+          if(length(test[[1]]) == 2) {
               ids <- paste0(as.list(strsplit(ids, ":")[[1]])[[1]], "/", as.list(strsplit(ids, ":")[[1]])[[2]])
           }
   					
@@ -89,7 +89,6 @@ altmetrics <- function(oid = NULL, id = NULL, doi = NULL, pmid = NULL, arXiv = N
   		# message(sprintf("%s", identifiers[[1]]))
 		url <- "http://api.altmetric.com/v1/"
 		url <- paste0(url,  ids, "?key=", apikey)
-		# message(sprintf("%s", url))
         metrics <- getURL(url,  curl = curl)
    
    if(metrics == "Not Found") {
