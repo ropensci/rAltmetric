@@ -80,7 +80,7 @@ altmetrics <- function(oid = NULL, id = NULL, doi = NULL, pmid = NULL, arXiv = N
           }
   					
  				supplied_id <-  as.character(as.list((strsplit(ids,'/'))[[1]])[[1]])
- 				message(sprintf("%s", supplied_id))
+ 				# message(sprintf("%s", supplied_id))
  				if(!(supplied_id %in% acceptable_identifiers))
  						stop("Unknown identifier. Please use doi, pmid, arxiv or id (for altmetric id).", call.=F)
  						             
