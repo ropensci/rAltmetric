@@ -21,7 +21,9 @@ There was a recent paper by [Acuna et al](http://www.nature.com/news/2010/100616
 
 ```r
 library(rAltmetric)
-acuna <- altmetrics('10.1038/489201a')
+acuna <- altmetrics('doi/10.1038/489201a') 
+# or
+acuna <- altmetrics(doi='10.1038/489201a') 
 > acuna
 Altmetrics on: "Future impact: Predicting scientific success" with doi 10.1038/489201a (altmetric_id: 942310) published in Nature.
   provider count
@@ -33,6 +35,16 @@ Altmetrics on: "Future impact: Predicting scientific success" with doi 10.1038/4
 
 ```
 
+## Other ways to get metrics
+
+```r
+altmetrics('arXiv:1106.2748')
+altmetrics('id/128838')
+altmetrics(id='128838')  
+altmetrics(pmid='21460563')
+altmetrics('pmid/21460563')
+altmetrics(arXiv ='arXiv:1106.2748')
+```
 
 ## Data
 To obtain the metrics in tabular form for further processing, run any object of class `altmetric` through `altmetric_data()` to get data that can easily be written to disk as a spreadsheet.
@@ -107,8 +119,10 @@ doi_data <- read.csv('dois.csv', header = TRUE)
 
 
 library(plyr)
+# First we should add the identifier to the list
+doi_list <- paste0("doi","/", doi_data$doi)
 # First, let's retrieve the metrics.
-raw_metrics <- llply(doi_data$doi, altmetrics, .progress = 'text')
+raw_metrics <- llply(doi_list, altmetrics, .progress = 'text')
 # Now let's pull the data together.
 metric_data <- ldply(raw_metrics, altmetric_data)
 # Finally we save this to a spreadsheet for further analysis/vizualization.
