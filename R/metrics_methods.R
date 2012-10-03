@@ -35,7 +35,7 @@ if (!is(alt_obj, "altmetric"))
 stats <- melt(alt_obj[grep("^cited", names(alt_obj))])
 stats$names <- unname(sapply(stats$L1, return_provider))
 stats$names <- factor(stats$names, levels = stats$names[rev(order(stats$value))])
-
+stats <- stats[-(which(stats$L1=="cited_by_accounts_count")),]
 # Grab the donut image
 donut <- readPNG(getURLContent(alt_obj$images[[2]]))
 
