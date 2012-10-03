@@ -10,7 +10,7 @@
 \arguments{
   \item{oid}{\code{oid} Any object ID. Any general object
   identifier as long as the prefix is "doi","pmid",
-  "arxiv", or "id".}
+  "arXiv", or "id".}
 
   \item{id}{The Altmetric \code{id} of a paper. If
   specifiying directly, the "id" prefix is not necessary.}
@@ -22,7 +22,7 @@
   directly, the "pmid" prefix is not necessary.}
 
   \item{arXiv}{The \code{arxiv} ID of a paper.If
-  specifiying directly, the "arxiv" prefix is not
+  specifiying directly, the "arXiv" prefix is not
   necessary.}
 
   \item{apikey}{An API key obtained from altmetric. The key

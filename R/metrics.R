@@ -3,11 +3,11 @@
 #' Grab altmetric data on any paper
 #'
 #' This function will retrieve data from Altmetric.com on any paper with an appropriate object identifier. Acceptable identifiers include dois, arXiv ids, pubmed ids and altmetric ids.
-#' @param oid \code{oid} Any object ID. Any general object identifier as long as the prefix is "doi","pmid", "arxiv", or "id".
+#' @param oid \code{oid} Any object ID. Any general object identifier as long as the prefix is "doi","pmid", "arXiv", or "id".
 #' @param id The Altmetric \code{id} of a paper. If specifiying directly, the "id" prefix is not necessary.
 #' @param doi The \code{doi} of a paper. If specifiying directly, the "doi" prefix is not necessary.
 #' @param pmid The \code{pmid} of a paper.If specifiying directly, the "pmid" prefix is not necessary.
-#' @param arXiv The \code{arxiv} ID of a paper.If specifiying directly, the "arxiv" prefix is not necessary.
+#' @param arXiv The \code{arxiv} ID of a paper.If specifiying directly, the "arXiv" prefix is not necessary.
 #' @param  apikey An API key obtained from altmetric. The key for this application is '37c9ae22b7979124ea650f3412255bf9' and you are free to use it for academic non-commercial research. But if you start seeing rate limits, please contact support at altmetric.com to get your own.
 #'
 #' The function returns detailed metrics. For more information on all the fields returned by the function, see the API documentation: (\url{http://api.altmetric.com/docs/call_citations.html}). If you get your own key, you can save it in your \code{.rprofile} as \code{options(altmetricKey="YOUR_KEY")}
