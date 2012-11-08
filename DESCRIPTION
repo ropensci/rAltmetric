@@ -3,7 +3,7 @@ Type: Package
 Title: Retrieves altmerics data for any published paper from altmetrics.com
 Version: 0.3
 Date: 2012-09-12
-Author: Karthik Ram
+Author: Karthik Ram [aut, cre]
 Maintainer: Karthik Ram <karthik.ram@gmail.com>
 Description: Programmatic interface to the Altmetric.com API.
 URL: https://github.com/ropensci/rAltmetric
