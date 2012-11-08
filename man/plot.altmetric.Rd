@@ -2,10 +2,12 @@
 \alias{plot.altmetric}
 \title{Plots metrics for an altmetric object}
 \usage{
-  \method{plot}{altmetric} (alt_obj)
+  \method{plot}{altmetric} (x, ...)
 }
 \arguments{
-  \item{alt_obj}{An object of class \code{Altmetric}}
+  \item{x}{An object of class \code{Altmetric}}
+
+  \item{...}{additional arguments}
 }
 \description{
   Plots metrics for an altmetric object
