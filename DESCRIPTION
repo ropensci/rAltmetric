@@ -1,6 +1,6 @@
 Package: rAltmetric
 Type: Package
-Title: Retrieves altmerics data for any published paper from altmetrics.com
+Title: Retrieves altmerics data for any published paper from altmetric.com
 Version: 0.3
 Date: 2012-09-12
 Author: Karthik Ram [aut, cre]
