@@ -131,7 +131,8 @@ alt_obj$issns <- paste0(alt_obj$issns, collapse = '', sep = ",")
 basic_stuff <- data.frame(matrix(rep(NA, 10), nrow =1))
 names(basic_stuff) <-  names(alt_obj)[1:10]
 basic_data <- data.frame(t(unlist(alt_obj[1:10])))
-basics <- rbind.fill(basic_stuff, basic_data)[-1, ]
+# basics <- rbind.fill(basic_stuff, basic_data)[-1, ]
+basics <- basic_data
 
 # Readers to data.frame
 readers <- unrowname(t(data.frame(reader)))
