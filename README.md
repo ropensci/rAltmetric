@@ -11,8 +11,9 @@ A stable version is available from CRAN. To install
 
 ```r
 install.packages('rAltmetric')
-`
+```
 
+## Development version
 ```r
 # If you don't already have the devtools library, first run
 install.packages('devtools')
