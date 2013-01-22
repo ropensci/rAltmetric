@@ -1,9 +1,9 @@
-![altmetric.com](https://raw.github.com/ropensci/rAltmetric/master/altmetric_logo_title.png) 
+![altmetric.com](https://raw.github.com/ropensci/rAltmetric/master/altmetric_logo_title.png)
 # rAltmetric
 
 This package provides a way to programmatically retrieve altmetric data from [altmetric.com](http://altmetric.com) for any publication with the appropriate identifer. The package is really simple to use and only has two major functions: One (`altmetrics()`) to download metrics and another (`altmetric_data()`) to extract the data into a `data.frame`. It also includes generic S3 methods to plot/print metrics for any altmetric object.
 
-Questions, features requests and issues should go [here](https://github.com/ropensci/rAltmetric/issues/). General comments to [karthik.ram@gmail.com](mailto:karthik.ram@gmail.com). 
+Questions, features requests and issues should go [here](https://github.com/ropensci/rAltmetric/issues/). General comments to [karthik.ram@gmail.com](mailto:karthik.ram@gmail.com).
 
 # Installing the package
 
@@ -126,4 +126,4 @@ write.csv(metric_data, file = "metric_data.csv")
 
 ## Further reading
 * [Metrics: Do metrics matter?](http://www.nature.com/news/2010/100616/full/465860a.html)
-* [The altmetrics manifesto](http://altmetrics.org/manifesto/) 
+* [The altmetrics manifesto](http://altmetrics.org/manifesto/)
