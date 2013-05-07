@@ -112,66 +112,71 @@ altmetrics <- function(oid = NULL, id = NULL, doi = NULL, pmid = NULL, arXiv = N
 #' altmetric_data(altmetrics('10.1038/489201a'))
 #'}
 altmetric_data <- function(alt_obj) {
-value <- NA
-if (is(alt_obj, "altmetric"))  {
-
-# Pull our readers and cohorts before squashing the list
-reader <- alt_obj$readers
-cohort <- alt_obj$cohorts
-alt_obj <- alt_obj[-which(names(alt_obj)=="readers")]
-alt_obj <- alt_obj[-which(names(alt_obj)=="cohorts")]
-
-# Remove TQ if it exists
-if("tq" %in% names(alt_obj)) {
-   alt_obj <- alt_obj[-which(names(alt_obj)=="tq")]
-}
-
-# Basic stats
-alt_obj$issns <- paste0(alt_obj$issns, collapse = '', sep = ",")
-basic_stuff <- data.frame(matrix(rep(NA, 10), nrow =1))
-names(basic_stuff) <-  names(alt_obj)[1:10]
-basic_data <- data.frame(t(unlist(alt_obj[1:10])))
-# basics <- rbind.fill(basic_stuff, basic_data)[-1, ]
-basics <- basic_data
-
-# Readers to data.frame
-readers <- unrowname(t(data.frame(reader)))
-cohorts <- data.frame("pub" = NA, "sci" = NA, "com" = NA, "doc" = NA)
-cohorts2 <- data.frame(unrowname(t(data.frame(cohort))))
-cohorts <- rbind.fill(cohorts, cohorts2)[-1,]
-
-# Context (hard to standardize so excluding this for now)
-# context <- ldply(alt_obj$context, function(foo) t(data.frame(foo)))
-# names(context) <- c("type", "count", "rank", "pct")
-# more_metrics <- dcast(melt(context, id.var="type"), 1~variable+type)[, -1]
-# # 1, 18
-
-# Counts to data.frame
-stats_base <- data.frame("cited_by_gplus_count" =NA, "cited_by_fbwalls_count" =NA,"cited_by_posts_count" =NA, "cited_by_tweeters_count" =NA, "cited_by_accounts_count" =NA, "cited_by_feeds_count" =NA, "cited_by_rdts_count" =NA, "cited_by_msm_count" =NA, "cited_by_delicious_count" =NA, "cited_by_forum_count" = NA, "cited_by_qs_count" = NA, "cited_by_rh_count" = NA)
-stats <- melt(alt_obj[grep("^cited", names(alt_obj))])
-stats <- dcast(stats, 1~value+L1)[, -1]
-names(stats) <- gsub("^[0-9]_","", names(stats))
-stats <- rbind.fill(stats_base, stats)[-1,]
-# 1, 11
-
-alt_obj$subjects <- paste0(alt_obj$subjects, collapse='', sep=",")
-alt_obj$scopus_subjects <- paste0(alt_obj$scopus_subjects, collapse='', sep=", ")
-
-if(length(alt_obj$added_on) ==0 || is.null(alt_obj$added_on)) {
-	alt_obj$added_on <- NA
-
-}
-if(length(alt_obj$published_on) ==0 || is.null(alt_obj$published_on)) {
-	alt_obj$published_on <- NA
-}
-
-
-# Removing more_metrics for the time being
-# return(data.frame(basic_stuff, stats,  score = alt_obj$score, readers, url = alt_obj$url, added_on = alt_obj$added_on, published_on = alt_obj$published_on, subjects = alt_obj$subjects, scopus_subjects = alt_obj$scopus_subjects, last_updated = alt_obj$last_updated, readers_count = alt_obj$readers_count, more_metrics, details_url = alt_obj$details_url))
-
- return(data.frame(basics, stats,  score = alt_obj$score, readers, url = alt_obj$url, added_on = alt_obj$added_on, published_on = alt_obj$published_on, subjects = alt_obj$subjects, scopus_subjects = alt_obj$scopus_subjects, last_updated = alt_obj$last_updated, readers_count = alt_obj$readers_count, details_url = alt_obj$details_url))
-}
-           
+  value <- NA
+  if (is(alt_obj, "altmetric"))  {
+    
+    # Pull our readers and cohorts before squashing the list
+    reader <- alt_obj$readers
+    cohort <- alt_obj$cohorts
+    alt_obj <- alt_obj[-which(names(alt_obj)=="readers")]
+    alt_obj <- alt_obj[-which(names(alt_obj)=="cohorts")]
+    
+    # Remove TQ if it exists
+    if("tq" %in% names(alt_obj)) {
+      alt_obj <- alt_obj[-which(names(alt_obj)=="tq")]
+    }
+    
+    # Basic stats
+    alt_obj$issns <- paste0(alt_obj$issns, collapse = '', sep = ",")
+    basic_stuff <- data.frame(matrix(rep(NA, 10), nrow =1))
+    names(basic_stuff) <-  names(alt_obj)[1:10]
+    basic_data <- data.frame(t(unlist(alt_obj[1:10])))
+    # basics <- rbind.fill(basic_stuff, basic_data)[-1, ]
+    basics <- basic_data
+    
+    # Readers to data.frame
+    readers <- unrowname(t(data.frame(reader)))
+    cohorts <- data.frame("pub" = NA, "sci" = NA, "com" = NA, "doc" = NA)
+    cohorts2 <- data.frame(unrowname(t(data.frame(cohort))))
+    cohorts <- rbind.fill(cohorts, cohorts2)[-1,]
+    
+    # Context (hard to standardize so excluding this for now)
+    # context <- ldply(alt_obj$context, function(foo) t(data.frame(foo)))
+    # names(context) <- c("type", "count", "rank", "pct")
+    # more_metrics <- dcast(melt(context, id.var="type"), 1~variable+type)[, -1]
+    # # 1, 18
+    
+    # Counts to data.frame
+    stats_base <- data.frame("cited_by_gplus_count" =NA, "cited_by_fbwalls_count" =NA,"cited_by_posts_count" =NA, "cited_by_tweeters_count" =NA, "cited_by_accounts_count" =NA, "cited_by_feeds_count" =NA, "cited_by_rdts_count" =NA, "cited_by_msm_count" =NA, "cited_by_delicious_count" =NA, "cited_by_forum_count" = NA, "cited_by_qs_count" = NA, "cited_by_rh_count" = NA)
+#     stats <- melt(alt_obj[grep("^cited", names(alt_obj))])
+    stats <- data.frame(alt_obj[grep("^cited", names(alt_obj))])
+#     stats <- dcast(stats, 1~value+L1)[, -1]
+#     names(stats) <- gsub("^[0-9]_","", names(stats))
+    stats <- rbind.fill(stats_base, stats)[-1,]
+    # 1, 11
+    
+    alt_obj$subjects <- paste0(alt_obj$subjects, collapse='', sep=",")
+    alt_obj$scopus_subjects <- paste0(alt_obj$scopus_subjects, collapse='', sep=", ")
+    
+    if(length(alt_obj$added_on) ==0 || is.null(alt_obj$added_on)) {
+      alt_obj$added_on <- NA
+      
+    }
+    if(length(alt_obj$published_on) ==0 || is.null(alt_obj$published_on)) {
+      alt_obj$published_on <- NA
+    }
+    
+    
+    # Removing more_metrics for the time being
+    # return(data.frame(basic_stuff, stats,  score = alt_obj$score, readers, url = alt_obj$url, added_on = alt_obj$added_on, published_on = alt_obj$published_on, subjects = alt_obj$subjects, scopus_subjects = alt_obj$scopus_subjects, last_updated = alt_obj$last_updated, readers_count = alt_obj$readers_count, more_metrics, details_url = alt_obj$details_url))
+    
+    return(data.frame(basics, stats,  score = alt_obj$score, readers, url = alt_obj$url, 
+                      added_on = alt_obj$added_on, published_on = alt_obj$published_on, 
+                      subjects = alt_obj$subjects, scopus_subjects = alt_obj$scopus_subjects, 
+                      last_updated = alt_obj$last_updated, readers_count = alt_obj$readers_count, 
+                      details_url = alt_obj$details_url))
+  }
+  
 }
 
 
