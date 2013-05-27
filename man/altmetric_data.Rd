@@ -15,7 +15,7 @@
 }
 \examples{
 \dontrun{
-altmetric_data(altmetrics('10.1038/489201a'))
+altmetric_data(altmetrics(doi='10.1038/489201a'))
 }
 }
 

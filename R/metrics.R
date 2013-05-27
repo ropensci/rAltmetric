@@ -91,14 +91,14 @@ altmetrics <- function(oid = NULL, id = NULL, doi = NULL, pmid = NULL, arXiv = N
 		url <- paste0(url,  ids, "?key=", apikey)
         metrics <- getURL(url,  curl = curl)
    
-   if(metrics == "Not Found") {
+  if(metrics == "Not Found") {
     	 message(sprintf("No metrics found on %s", identifiers[[1]]))
     	 return(NULL)
     	} else {
     res <- fromJSON(metrics)
     class(res) <- "altmetric"
     return(res)
-}
+  }
 }
 # Make it possible to do either doi or a full list. In case of full list, the first part must be the name of the identifier.
 
@@ -109,7 +109,7 @@ altmetrics <- function(oid = NULL, id = NULL, doi = NULL, pmid = NULL, arXiv = N
 #' @export
 #' @return data.frame
 #' @examples \dontrun{
-#' altmetric_data(altmetrics('10.1038/489201a'))
+#' altmetric_data(altmetrics(doi='10.1038/489201a'))
 #'}
 altmetric_data <- function(alt_obj) {
   value <- NA
@@ -135,7 +135,8 @@ altmetric_data <- function(alt_obj) {
     basics <- basic_data
     
     # Readers to data.frame
-    readers <- unrowname(t(data.frame(reader)))
+#     readers <- unrowname(t(data.frame(reader)))
+    readers <- t(data.frame(reader))
     cohorts <- data.frame("pub" = NA, "sci" = NA, "com" = NA, "doc" = NA)
     cohorts2 <- data.frame(unrowname(t(data.frame(cohort))))
     cohorts <- rbind.fill(cohorts, cohorts2)[-1,]
@@ -170,7 +171,7 @@ altmetric_data <- function(alt_obj) {
     # Removing more_metrics for the time being
     # return(data.frame(basic_stuff, stats,  score = alt_obj$score, readers, url = alt_obj$url, added_on = alt_obj$added_on, published_on = alt_obj$published_on, subjects = alt_obj$subjects, scopus_subjects = alt_obj$scopus_subjects, last_updated = alt_obj$last_updated, readers_count = alt_obj$readers_count, more_metrics, details_url = alt_obj$details_url))
     
-    return(data.frame(basics, stats,  score = alt_obj$score, readers, url = alt_obj$url, 
+    return(data.frame(basics, stats,  score = alt_obj$score, t(readers), url = alt_obj$url, 
                       added_on = alt_obj$added_on, published_on = alt_obj$published_on, 
                       subjects = alt_obj$subjects, scopus_subjects = alt_obj$scopus_subjects, 
                       last_updated = alt_obj$last_updated, readers_count = alt_obj$readers_count, 
