@@ -117,7 +117,7 @@ doi_data <- read.csv('dois.csv', header = TRUE)
 
 library(plyr)
 # First, let's retrieve the metrics.
-raw_metrics <- llply(doi_data$doi, altmetrics, .progress = 'text')
+raw_metrics <- llply(doi_data$doi, function(x) altmetrics(doi = x), .progress = 'text')
 # Now let's pull the data together.
 metric_data <- ldply(raw_metrics, altmetric_data)
 # Finally we save this to a spreadsheet for further analysis/vizualization.
