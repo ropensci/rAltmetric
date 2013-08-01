@@ -9,12 +9,12 @@ Questions, features requests and issues should go [here](https://github.com/rope
 
 A stable version is available from CRAN. To install
 
-```r
+```coffee
 install.packages('rAltmetric')
 ```
 
 ## Development version
-```r
+```coffee
 # If you don't already have the devtools library, first run
 install.packages('devtools')
 
@@ -28,7 +28,7 @@ install_github('rAltmetric', 'ropensci')
 ## Obtaining metrics
 There was a recent paper by [Acuna et al](http://www.nature.com/news/2010/100616/full/465860a.html) that received a lot of attention on Twitter. What was the impact of that paper?
 
-```r
+```coffee
 library(rAltmetric)
 acuna <- altmetrics('10.1038/489201a')
 > acuna
@@ -46,7 +46,7 @@ Altmetrics on: "Future impact: Predicting scientific success" with doi 10.1038/4
 ## Data
 To obtain the metrics in tabular form for further processing, run any object of class `altmetric` through `altmetric_data()` to get data that can easily be written to disk as a spreadsheet.
 
-```r
+```coffee
 > altmetric_data(acuna)
                                          title
 1 Future impact: Predicting scientific success
@@ -86,7 +86,7 @@ To obtain the metrics in tabular form for further processing, run any object of 
 
 You can save these data into a clean spreadsheet format:
 
-```r
+```coffee
 acuna_data <- altmetric_data(acuna)
 write.csv(acuna_data, file = 'acuna_altmetrics.csv')
 ```
@@ -94,7 +94,7 @@ write.csv(acuna_data, file = 'acuna_altmetrics.csv')
 ## Visualization
 For any altmetric object you can quickly plot the stats with a generic `plot` function. The plot overlays the [altmetric badge and the score](http://api.altmetric.com/embeds.html) on the top right corner. If you prefer a customized plot, create your own with the raw data generated from `almetric_data()`
 
-```r
+```coffee
 > plot(acuna)
 ```
 
@@ -103,7 +103,7 @@ For any altmetric object you can quickly plot the stats with a generic `plot` fu
 # Gathering metrics for many DOIs
 For a real world use-case, one might want to get metrics on multiple publications. If so, just read them from a spreadsheet and `llply` through them like the example below.
 
-```r
+```coffee
 # Be sure to update the path if the example csv is not in your working dir
 doi_data <- read.csv('dois.csv', header = TRUE)
 
