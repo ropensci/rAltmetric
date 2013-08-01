@@ -63,8 +63,6 @@ altmetrics(doi ='10.1038/480426a')
 Or specfiy the doi with the id
 You can do the same for other providers such as pmid, id, and arxiv
 altmetrics('doi/10.1038/480426a')
-
-doi='10.1371/journal.pbio.1001118'
 }
 }
 

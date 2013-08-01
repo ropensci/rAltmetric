@@ -171,7 +171,7 @@ altmetric_data <- function(alt_obj) {
     # Removing more_metrics for the time being
     # return(data.frame(basic_stuff, stats,  score = alt_obj$score, readers, url = alt_obj$url, added_on = alt_obj$added_on, published_on = alt_obj$published_on, subjects = alt_obj$subjects, scopus_subjects = alt_obj$scopus_subjects, last_updated = alt_obj$last_updated, readers_count = alt_obj$readers_count, more_metrics, details_url = alt_obj$details_url))
     
-    return(data.frame(basics, stats,  score = alt_obj$score, t(readers), url = alt_obj$url, 
+    return(data.frame(basics, stats,  score = alt_obj$score, readers, url = alt_obj$url, 
                       added_on = alt_obj$added_on, published_on = alt_obj$published_on, 
                       subjects = alt_obj$subjects, scopus_subjects = alt_obj$scopus_subjects, 
                       last_updated = alt_obj$last_updated, readers_count = alt_obj$readers_count, 
