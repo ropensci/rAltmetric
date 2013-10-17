@@ -127,3 +127,5 @@ write.csv(metric_data, file = "metric_data.csv")
 ## Further reading
 * [Metrics: Do metrics matter?](http://www.nature.com/news/2010/100616/full/465860a.html)
 * [The altmetrics manifesto](http://altmetrics.org/manifesto/)
+
+[![](http://ropensci.org/public_images/package_footer.png)](http://ropensci.org)
