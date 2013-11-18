@@ -128,4 +128,26 @@ write.csv(metric_data, file = "metric_data.csv")
 * [Metrics: Do metrics matter?](http://www.nature.com/news/2010/100616/full/465860a.html)
 * [The altmetrics manifesto](http://altmetrics.org/manifesto/)
 
+
+To cite package ‘rAltmetric’ in publications use:
+
+```coffee
+  Karthik Ram (2012). rAltmetric: Retrieves altmerics data for any
+  published paper from altmetrics.com. R package version 0.3.
+  http://CRAN.R-project.org/package=rAltmetric
+
+A BibTeX entry for LaTeX users is
+
+  @Manual{,
+    title = {rAltmetric: Retrieves altmerics data for any published paper from
+altmetrics.com},
+    author = {Karthik Ram},
+    year = {2012},
+    note = {R package version 0.3},
+    url = {http://CRAN.R-project.org/package=rAltmetric},
+  }
+```
+
+
+
 [![](http://ropensci.org/public_images/github_footer.png)](http://ropensci.org)
