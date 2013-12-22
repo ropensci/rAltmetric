@@ -9,7 +9,7 @@ Description: Programmatic interface to the Altmetric.com API.
 URL: https://github.com/ropensci/rAltmetric
 Bugs and Issues: https://github.com/ropensci/rAltmetric/issues/
 License: CC0
-Depends:
+Imports:
     plyr,
     RCurl,
     reshape2,
