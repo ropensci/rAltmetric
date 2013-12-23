@@ -2,14 +2,14 @@
 \alias{return_provider}
 \title{Returns cleaner metric source names (mostly for internal use)}
 \usage{
-  return_provider(provider)
+return_provider(provider)
 }
 \arguments{
   \item{provider}{the data provider}
 }
 \description{
-  Returns cleaner metric source names (mostly for internal
-  use)
+Returns cleaner metric source names (mostly for internal
+use)
 }
 \examples{
 \dontrun{

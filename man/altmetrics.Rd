@@ -2,10 +2,9 @@
 \alias{altmetrics}
 \title{Grab altmetric data on any paper}
 \usage{
-  altmetrics(oid = NULL, id = NULL, doi = NULL,
-    pmid = NULL, arXiv = NULL,
-    apikey = getOption("altmetricKey"),
-    curl = getCurlHandle(), ...)
+altmetrics(oid = NULL, id = NULL, doi = NULL, pmid = NULL,
+  arXiv = NULL, apikey = getOption("altmetricKey"),
+  curl = getCurlHandle(), ...)
 }
 \arguments{
   \item{oid}{\code{oid} Any object ID. Any general object
@@ -46,13 +45,13 @@
   \item{...}{additional parameters}
 }
 \value{
-  \code{list}
+\code{list}
 }
 \description{
-  This function will retrieve data from Altmetric.com on
-  any paper with an appropriate object identifier.
-  Acceptable identifiers include dois, arXiv ids, pubmed
-  ids and altmetric ids.
+This function will retrieve data from Altmetric.com on any
+paper with an appropriate object identifier. Acceptable
+identifiers include dois, arXiv ids, pubmed ids and
+altmetric ids.
 }
 \examples{
 \dontrun{
