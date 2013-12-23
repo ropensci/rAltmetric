@@ -1,7 +1,7 @@
 Package: rAltmetric
 Type: Package
 Title: Retrieves altmerics data for any published paper from altmetric.com
-Version: 0.3
+Version: 0.5
 Date: 2012-09-12
 Author: Karthik Ram [aut, cre]
 Maintainer: Karthik Ram <karthik.ram@gmail.com>
@@ -16,6 +16,3 @@ Imports:
     png,
     ggplot2 (>= 0.9.2.1),
     RJSONIO
-Collate:
-    'metrics.R'
-    'metrics_methods.R'
