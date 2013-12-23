@@ -26,6 +26,10 @@ print.altmetric <- function(x, ...) {
 #' @method plot altmetric
 #' @S3method plot altmetric
 #' @param x An object of class \code{Altmetric}
+#' @import ggplot2
+#' @importFrom reshape2 melt
+#' @importFrom png readPNG
+#' @importFrom RCurl getURLContent
 #' @param ... additional arguments
 plot.altmetric <- function(x, ...) {
 

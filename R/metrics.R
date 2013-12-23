@@ -13,6 +13,9 @@
 #' The function returns detailed metrics. For more information on all the fields returned by the function, see the API documentation: (\url{http://api.altmetric.com/docs/call_citations.html}). If you get your own key, you can save it in your \code{.rprofile} as \code{options(altmetricKey="YOUR_KEY")}
 #' @param curl passes on curl handle in a vectorized operation
 #' @param ... additional parameters
+#' @importFrom RCurl getURL getCurlHandle
+#' @importFrom RJSONIO fromJSON
+#' @importFrom plyr compact unrowname
 #' @export
 #' @return \code{list}
 #' @examples \dontrun{
@@ -106,6 +109,7 @@ altmetrics <- function(oid = NULL, id = NULL, doi = NULL, pmid = NULL, arXiv = N
 #' Returns a data frame of metrics for a paper
 #'
 #' @param alt_obj altmetrics object
+#' @importFrom plyr rbind.fill
 #' @export
 #' @return data.frame
 #' @examples \dontrun{
