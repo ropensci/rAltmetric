@@ -1,7 +1,6 @@
 
 #' Print a summary for an altmetric object
-#' @method print altmetric
-#' @S3method print altmetric
+#' @export 
 #' @param x An object of class \code{Altmetric}
 #' @param ... additional arguments
 print.altmetric <- function(x, ...) {
@@ -23,8 +22,7 @@ print.altmetric <- function(x, ...) {
 
 #' Plots metrics for an altmetric object
 #' 
-#' @method plot altmetric
-#' @S3method plot altmetric
+#' @export 
 #' @param x An object of class \code{Altmetric}
 #' @import ggplot2
 #' @importFrom reshape2 melt
