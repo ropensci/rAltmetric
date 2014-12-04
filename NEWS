@@ -1,10 +1,16 @@
-## v0.5
+rAltmetric 0.6
+------------------
+* Several bug fixes and documentation updates
+
+rAltmetric 0.5
+------------------
 
 * Removed hard dependencies and moved them to imports
 * Minor bug fixes
 
 
-## v0.3
+rAltmetric 0.3
+------------------
 
 * Initial release to CRAN
 
