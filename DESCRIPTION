@@ -1,20 +1,13 @@
-Package: rAltmetric
-Type: Package
-Title: Retrieves Altmerics Data For Any Published Paper From Altmetric.com
-Version: 0.6
-Date: 2014-12-02
-Author: Karthik Ram [aut, cre]
-Maintainer: Karthik Ram <karthik.ram@gmail.com>
-Description: Programmatic interface to the Altmetric.com API.
-URL: https://github.com/ropensci/rAltmetric
-BugReports: https://github.com/ropensci/rAltmetric/issues/
-License: CC0
-Imports:
-    plyr,
-    RCurl,
-    reshape2,
-    png,
-    ggplot2 (>= 0.9.2.1),
-    RJSONIO
-Suggests:
-    testthat
+Package: rAltmetric2
+Title: Provides a programmatic interface the the Altmetric.com API on article level metrics.
+Version: 0.1.0.9000
+Authors@R: 'Karthik Ram <karthik.ram@gmail.com> [aut, cre]'
+Description: The package allows for retrieval of metrics on various 
+Depends: R (>= 3.1.1)
+License: MIT + file LICENSE
+LazyData: true
+Imports: 
+        assertthat,
+        httr,
+        jsonlite
+        
