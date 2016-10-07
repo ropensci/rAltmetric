@@ -35,7 +35,7 @@ There was a recent paper by [Acuna et al](http://www.nature.com/news/2010/100616
 
 ```coffee
 library(rAltmetric)
-acuna <- altmetrics('10.1038/489201a')
+acuna <- altmetrics('doi:10.1038/489201a')
 > acuna
 Altmetrics on: "Future impact: Predicting scientific success" with doi 10.1038/489201a (altmetric_id: 942310) published in Nature.
   provider count
