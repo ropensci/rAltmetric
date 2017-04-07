@@ -1,6 +1,7 @@
 
 Linux build: [![Build Status](https://travis-ci.org/ropensci/rAltmetric.svg?branch=master)](https://travis-ci.org/ropensci/rAltmetric)  
 Windows build: [![Build status](https://ci.appveyor.com/api/projects/status/x6x8d21rmcsv2ybt)](https://ci.appveyor.com/project/karthik/raltmetric)  
+[![codecov.io](https://codecov.io/github/ropensci/rAltmetric/coverage.svg?branch=master)](https://codecov.io/github/ropensci/rAltmetric?branch=master)
 
 
 [altmetric.com](https://raw.github.com/ropensci/rAltmetric/master/altmetric_logo_title.png)
