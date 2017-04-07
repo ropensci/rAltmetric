@@ -4,3 +4,6 @@ cache: packages
 notifications:
   slack:
     secure: PcdJMRncDb0dO4bGZLc8tcjhakOdhglyNQr8acdL1Wrq23Qb+ZF6fFfaahrbpSRD+pdpnXUXkmhWjbuqfHY1mnvC9gsFMr9KD9P82hJs2luRUs+mZBKWU45v4puAm19Zepr0P/rsj0KUJmcJepsxLo1ccjOY0xSxzf7jvyf8lx0=
+
+after_success:
+  - Rscript -e 'covr::codecov()'
