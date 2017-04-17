@@ -1,6 +1,6 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
-![altmetric.com](https://raw.github.com/ropensci/rAltmetric/master/altmetric_logo_title.png)
+![altmetric.com](altmetric_logo_title.png)
 
 rAltmetric
 ==========
