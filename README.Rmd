@@ -12,7 +12,7 @@ knitr::opts_chunk$set(
 )
 ```
 
-[altmetric.com](https://raw.github.com/ropensci/rAltmetric/master/altmetric_logo_title.png)
+![altmetric.com](https://raw.github.com/ropensci/rAltmetric/master/altmetric_logo_title.png)
 
 
 # rAltmetric
