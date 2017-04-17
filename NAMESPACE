@@ -2,5 +2,5 @@
 
 export(citations)
 export(metrics)
+import(assertthat)
 import(httr)
-importFrom(assertthat,assert_that)

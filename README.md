@@ -1,4 +1,4 @@
 
-# Altmetric2
+# Altmetric
 
-This is the reworked version of rAltmetric (temp repo will get merged into rAltmetric shortly)
+This package provides a way to programmatically retrieve altmetric data from [altmetric.com](http://altmetric.com) for any publication with the appropriate identifer. 

@@ -1,5 +1,5 @@
 #' Retrieves most popular articles over a defined time period
-#' 
+#'
 #' The time period can be any of the following: '1d', '2d', '3d', '4d', '5d', '6d', '1w', '1m', '3m', '6m', '1y'
 #' @param day The time period over which metrics are required. Allowed options include '1d', '2d', '3d', '4d', '5d', '6d', '1w', '1m', '3m', '6m', '1y'resu
 #' @param  page Page number
@@ -10,9 +10,8 @@
 #' @param  subject Comma delimited list of slugified journal subjects. Include only articles from journals matching any of the supplied NLM subject ontology term(s).
 #' @param foptions A list of additional arguments for \code{httr}. There is no reason to use this argument except for debugging purposes.
 #' @import httr
-#' @importFrom assertthat assert_that
 #' @export
-#' @examples 
+#' @examples
 #' citations(day = '1d')
 #' # Only Facebook mentions
 #' fb_1week <- citations('1w', cited_in = "facebook")
@@ -28,7 +27,18 @@ citations <- function(day, page = NULL, num_results = 100, cited_in = NULL, doi_
   warn_for_status(data)
   results <- content(data, as = 'text')
   res <- jsonlite::fromJSON(results, flatten = TRUE)
+  res$results <- as.data.frame(apply(res$results, 2, flat_list))
   res$query <- data.frame(t(unlist(res$query)))
   class(res) <- "altmetric"
   res
+}
+
+
+#' NoRd
+#' @param foo input column
+flat_list <- function(foo) {
+  if(identical(class(foo), "list")) {
+    foo <- vapply(foo, paste, collapse = ", ", character(1L))
+  }
+  foo
 }

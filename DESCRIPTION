@@ -1,13 +1,14 @@
-Package: rAltmetric2
+Package: rAltmetric
 Title: Provides a programmatic interface the the Altmetric.com API on article level metrics.
-Version: 0.1.0.9000
+Version: 1.0.0.99
 Authors@R: 'Karthik Ram <karthik.ram@gmail.com> [aut, cre]'
-Description: The package allows for retrieval of metrics on various 
+Description: Programmatic interface to the Altmetric.com API.
 Depends: R (>= 3.1.1)
 License: MIT + file LICENSE
 LazyData: true
-Imports: 
+Imports:
         assertthat,
         httr,
         jsonlite
-        
+Suggests:
+        dplyr
