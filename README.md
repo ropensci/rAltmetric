@@ -1,6 +1,9 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
-[altmetric.com](https://raw.github.com/ropensci/rAltmetric/master/altmetric_logo_title.png) \# rAltmetric
+[altmetric.com](https://raw.github.com/ropensci/rAltmetric/master/altmetric_logo_title.png)
+
+rAltmetric
+==========
 
 This package provides a way to programmatically retrieve altmetric data from [altmetric.com](http://altmetric.com) for any publication with the appropriate identifer. The package is really simple to use and only has two major functions: One (`altmetrics()`) to download metrics and another (`altmetric_data()`) to extract the data into a `data.frame`. It also includes generic S3 methods to plot/print metrics for any altmetric object.
 
