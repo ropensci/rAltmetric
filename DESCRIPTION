@@ -1,5 +1,5 @@
 Package: rAltmetric
-Title: Retrieves Altmerics Data For Any Published Paper From 'Altmetric.com'
+Title: Retrieves Altmerics Data for Any Published Paper from 'Altmetric.com'
 Version: 0.7.9000
 Authors@R: person("Karthik", "Ram", email = "karthik.ram@gmail.com",
                   role = c("aut", "cre"))
