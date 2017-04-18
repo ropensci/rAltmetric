@@ -46,7 +46,7 @@ altmetrics <-
     if (!is.null(doi)) doi <- prefix_fix(doi, "doi")
     if (!is.null(isbn)) isbn <- prefix_fix(isbn, "isbn")
     if (!is.null(uri)) uri <- prefix_fix(uri, "uri")
-    if (!is.null(arxiv)) arxiv <- prefix_fix(arxiv, "arxiv")
+    if (!is.null(arXiv)) arXiv <- prefix_fix(arXiv, "arxiv")
     if (!is.null(pmid)) pmid <- prefix_fix(pmid, "pmid")
 
 
@@ -118,4 +118,4 @@ prefix_fix <- function(x, type = "doi") {
         prefix <- as.list((strsplit(x, '/'))[[1]])[[1]]
       if (prefix != type)
         paste0(type, "/", x)
-}  
+}
