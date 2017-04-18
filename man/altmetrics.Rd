@@ -5,8 +5,8 @@
 \title{Query data from the Altmetric.com API}
 \usage{
 altmetrics(oid = NULL, id = NULL, doi = NULL, pmid = NULL,
-  arXiv = NULL, apikey = getOption("altmetricKey"), foptions = list(),
-  ...)
+  arXiv = NULL, isbn = NULL, uri = NULL,
+  apikey = getOption("altmetricKey"), foptions = list(), ...)
 }
 \arguments{
 \item{oid}{An object ID}
@@ -19,6 +19,10 @@ altmetrics(oid = NULL, id = NULL, doi = NULL, pmid = NULL,
 
 \item{arXiv}{An Arxiv id.}
 
+\item{isbn}{ISBN}
+
+\item{uri}{Any URI}
+
 \item{apikey}{Your API `key`. By default the package ships with a key, but mostly as a demo. If the key becomes overused, then it is likely that you will start to see API limit errors}
 
 \item{foptions}{Additional options for `httr`}
@@ -29,6 +33,7 @@ altmetrics(oid = NULL, id = NULL, doi = NULL, pmid = NULL,
 Query data from the Altmetric.com API
 }
 \examples{
-z <- altmetrics(doi ='10.1038/480426a')
-# If you desire a `list` instead, then simply turn off the `flatten` argument
+altmetrics(doi ='10.1038/480426a')
+# For ISBNs
+ib <- altmetrics(isbn = "978-3-319-25557-6")
 }

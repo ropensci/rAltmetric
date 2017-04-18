@@ -5,33 +5,36 @@
 #' @param doi A DOI
 #' @param pmid A pubmed ID
 #' @param arXiv An Arxiv id.
+#' @param isbn ISBN
+#' @param uri Any URI
 #' @param apikey Your API `key`. By default the package ships with a key, but mostly as a demo. If the key becomes overused, then it is likely that you will start to see API limit errors
 #' @param foptions Additional options for `httr`
 #' @param ... additional options
-#'
 #' @export
 #' @examples
-#' z <- altmetrics(doi ='10.1038/480426a')
-#' # If you desire a `list` instead, then simply turn off the `flatten` argument
-
+#' altmetrics(doi ='10.1038/480426a')
+#' # For ISBNs
+#' ib <- altmetrics(isbn = "978-3-319-25557-6")
 altmetrics <-
   function(oid = NULL,
            id = NULL,
            doi = NULL,
            pmid = NULL,
            arXiv = NULL,
+           isbn = NULL,
+           uri = NULL,
            apikey = getOption('altmetricKey'),
            foptions = list(),
            ...) {
     if (is.null(apikey))
       apikey <- '37c9ae22b7979124ea650f3412255bf9'
 
-    acceptable_identifiers <- c("doi", "arXiv", "id", "pmid")
+    acceptable_identifiers <- c("doi", "arXiv", "id", "pmid", "isbn", "uri")
     # If you start hitting rate limits, email support@altmetric.com
     # to get your own key.
 
 
-    if (all(sapply(list(oid, doi, pmid, arXiv), is.null)))
+    if (all(sapply(list(oid, doi, pmid, arXiv, isbn, uri), is.null)))
       stop("No valid identfier found. See ?altmetrics for more help", call. =
              FALSE)
 
@@ -48,6 +51,22 @@ altmetrics <-
       if (prefix != "doi")
         doi <- paste0("doi", "/", doi)
     }
+
+    # If an isbn id is not prefixed by "id", add it in.
+    if (!is.null(isbn)) {
+      prefix <- as.list((strsplit(isbn, '/'))[[1]])[[1]]
+      if (prefix != "isbn")
+        isbn <- paste0("isbn", "/", isbn)
+    }
+
+    # If an uri id is not prefixed by "id", add it in.
+    if (!is.null(uri)) {
+      prefix <- as.list((strsplit(uri, '/'))[[1]])[[1]]
+      if (prefix != "uri")
+        uri <- paste0("uri", "/", uri)
+    }
+
+
     # If an arXiv id is not prefixed by "arXiv", add it in.
     if (!is.null(arXiv)) {
       prefix <- as.list((strsplit(arXiv, ':|/'))[[1]])[[1]]
@@ -63,7 +82,7 @@ altmetrics <-
 
 
     # remove the identifiders that weren't specified
-    identifiers <- ee_compact(list(oid, id, doi, pmid, arXiv))
+    identifiers <- ee_compact(list(oid, id, doi, pmid, arXiv, isbn, uri))
 
 
     # If user specifies more than one at once, then throw an error
@@ -88,9 +107,10 @@ altmetrics <-
 
     supplied_id <-
       as.character(as.list((strsplit(ids, '/'))[[1]])[[1]])
-    # message(sprintf("%s", supplied_id))
+
+     # message(sprintf("%s", supplied_id))
     if (!(supplied_id %in% acceptable_identifiers))
-      stop("Unknown identifier. Please use doi, pmid, arxiv or id (for altmetric id).",
+      stop("Unknown identifier. Please use doi, pmid, isbn, uri, arxiv or id (for altmetric id).",
            call. = F)
     base_url <- "http://api.altmetric.com/v1/"
     args <- list(key = apikey)
