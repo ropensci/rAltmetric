@@ -136,9 +136,7 @@ ids <- list(c(
   "10.1086/664183"
 ))
 
-alm <- function(x) {
-  altmetrics(doi = x) %>% altmetric_data()
-}
+alm <- function(x)  altmetrics(doi = x) %>% altmetric_data()
 
 results <- pmap_df(ids, alm)
 # This results in a data.frame with one row per identifier.
@@ -150,11 +148,11 @@ Further reading
 -   [Metrics: Do metrics matter?](http://www.nature.com/news/2010/100616/full/465860a.html)
 -   [The altmetrics manifesto](http://altmetrics.org/manifesto/)
 
-To cite package ‘rAltmetric’ in publications use:
+To cite package `rAltmetric` in publications use:
 
 ``` r
   Karthik Ram (2017). rAltmetric: Retrieves altmerics data for any
-  published paper from altmetrics.com. R package version 0.3.
+  published paper from altmetrics.com. R package version 0.7.
   http://CRAN.R-project.org/package=rAltmetric
 
 A BibTeX entry for LaTeX users is
