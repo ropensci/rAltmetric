@@ -66,7 +66,30 @@
     
     
 <div class="contents">
-<p>This is a short vignette explaning how to use <code>rAltmetric</code>.</p>
+<p>This is a short vignette explaning how to use <code>rAltmetric</code>. Altmetric is a private company that collects metrics that go far beyond traditional citations. It collects mentions on various social media to provide a more complete picture of the impact of a scholarly publication.</p>
+<p>The core functionality of the package is captured in two functions:</p>
+<p><code>altmetrics</code> - Returns data for a valid identifier such as an altmetric object id, a pubmed ID, an arxiv identifier, a doi, ISBN and so on.<br><code>altmetric_data</code> - takes the output of the previous function and returns a tidy data.frame</p>
+<p>The package can be used to parse a whole batch of identifiers at once.</p>
+<p>e.g.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(rAltmetric)
+<span class="kw">library</span>(magrittr)
+<span class="kw">library</span>(purrr)</code></pre></div>
+<pre><code>## 
+## Attaching package: 'purrr'</code></pre>
+<pre><code>## The following object is masked from 'package:magrittr':
+## 
+##     set_names</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">ids &lt;-<span class="st"> </span><span class="kw">list</span>(<span class="kw">c</span>(
+  <span class="st">"10.1038/nature09210"</span>,
+  <span class="st">"10.1126/science.1187820"</span>,
+  <span class="st">"10.1016/j.tree.2011.01.009"</span>,
+  <span class="st">"10.1086/664183"</span>
+))
+
+alm &lt;-<span class="st"> </span><span class="cf">function</span>(x)  <span class="kw"><a href="../reference/altmetrics.html">altmetrics</a></span>(<span class="dt">doi =</span> x) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw"><a href="../reference/altmetric_data.html">altmetric_data</a></span>()
+
+results &lt;-<span class="st"> </span><span class="kw">pmap_df</span>(ids, alm)
+<span class="co"># This results in a data.frame with one row per identifier.</span></code></pre></div>
 </div>
   </div>
 
