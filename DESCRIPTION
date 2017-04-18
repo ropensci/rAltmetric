@@ -2,7 +2,7 @@ Package: rAltmetric
 Title: Retrieves Altmerics Data For Any Published Paper From Altmetric.com
 Version: 0.7.9000
 Authors@R: 'Karthik Ram <karthik.ram@gmail.com> [aut, cre]'
-Description: What the package does (one paragraph).
+Description: Provides a programmatic interface to the citation information and alternate metrics provided by Altmetric. Metrics include traditional bibliometric counts, and mentions on various social media.
 Depends: R (>= 3.3.2)
 License: MIT + file LICENSE
 Encoding: UTF-8
@@ -14,5 +14,8 @@ Imports:
 Suggests:
   ggplot2,
   testthat      ,
-    covr
+    covr,
+    knitr,
+    rmarkdown
 RoxygenNote: 6.0.1
+VignetteBuilder: knitr
