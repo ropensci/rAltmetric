@@ -10,7 +10,7 @@
 #' @param apikey Your API `key`. By default the package ships with a key, but mostly as a demo. If the key becomes overused, then it is likely that you will start to see API limit errors
 #' @param foptions Additional options for `httr`
 #' @param ... additional options
-#' @importFrom httr stop_for_status status_code warn_for_status
+#' @importFrom httr GET stop_for_status status_code warn_for_status
 #' @export
 #' @examples
 #' \dontrun{
@@ -88,7 +88,7 @@ altmetrics <-
     if(status_code(request) == 404) {
     stop("No metrics found for object")
     } else {
-    stop_for_status(request)
+    warn_for_status(request)
     results <-
       jsonlite::fromJSON(httr::content(request, as = "text"), flatten = TRUE)
     results <- rlist::list.flatten(results)
