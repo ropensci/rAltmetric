@@ -16,8 +16,8 @@ This package provides a way to programmatically retrieve altmetrics from various
 
 Questions, features requests and issues should go [here](https://github.com/ropensci/rAltmetric/issues/).
 
-Installing the package
-======================
+Installing the package 🛠
+========================
 
 A stable version is available from CRAN. To install
 
@@ -54,7 +54,7 @@ acuna
 Data
 ----
 
-To obtain the metrics in tabular form for further processing, run any object of class `altmetric` through `altmetric_data()` to get data that can easily be written to disk as a spreadsheet.
+To obtain the metrics in tabular form for further processing, run any object of class `altmetric` through `altmetric_data()` to get a `data.frame` that can easily be written to disk.
 
 ``` r
 altmetric_data(acuna)
@@ -151,7 +151,7 @@ Further reading
 -   [Metrics: Do metrics matter?](http://www.nature.com/news/2010/100616/full/465860a.html)
 -   [The altmetrics manifesto](http://altmetrics.org/manifesto/)
 
-To cite package `rAltmetric` in publications use:
+📚 To cite package `rAltmetric` in publications use:
 
 ``` r
   Karthik Ram (2017). rAltmetric: Retrieves altmerics data for any
