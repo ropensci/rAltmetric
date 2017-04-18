@@ -25,17 +25,17 @@ altmetrics <-
            ...) {
     if (is.null(apikey))
       apikey <- '37c9ae22b7979124ea650f3412255bf9'
-    
+
     acceptable_identifiers <- c("doi", "arXiv", "id", "pmid")
     # If you start hitting rate limits, email support@altmetric.com
     # to get your own key.
-    
-    
+
+
     if (all(sapply(list(oid, doi, pmid, arXiv), is.null)))
       stop("No valid identfier found. See ?altmetrics for more help", call. =
              FALSE)
-    
-    
+
+
     # If an altmetric id is not prefixed by "id", add it in.
     if (!is.null(id)) {
       prefix <- as.list((strsplit(id, '/'))[[1]])[[1]]
@@ -52,7 +52,7 @@ altmetrics <-
     if (!is.null(arXiv)) {
       prefix <- as.list((strsplit(arXiv, ':|/'))[[1]])[[1]]
       arXiv <-
-        paste0("arXiv", "/", as.list((strsplit(arXiv, ':|/'))[[1]])[[2]])
+        paste0("arxiv", "/", as.list((strsplit(arXiv, ':|/'))[[1]])[[2]])
     }
     # If an pubmed id is not prefixed by "pmid", add it in.
     if (!is.null(pmid)) {
@@ -60,12 +60,12 @@ altmetrics <-
       if (prefix != "pmid")
         pmid <- paste0("pmid", "/", pmid)
     }
-    
-    
+
+
     # remove the identifiders that weren't specified
     identifiers <- ee_compact(list(oid, id, doi, pmid, arXiv))
-    
-    
+
+
     # If user specifies more than one at once, then throw an error
     # Users should use lapply(object_list, altmetrics)
     # to process multiple objects.
@@ -74,18 +74,18 @@ altmetrics <-
         "Function can only take one object at a time. Use lapply with a list to process multiple objects",
         call. = FALSE
       )
-    
+
     if (!is.null(identifiers)) {
       ids <- identifiers[[1]]
     }
-    
+
     # Fix arXiv
     test <- strsplit(ids, ":")
     if (length(test[[1]]) == 2) {
       ids <-
         paste0(as.list(strsplit(ids, ":")[[1]])[[1]], "/", as.list(strsplit(ids, ":")[[1]])[[2]])
     }
-    
+
     supplied_id <-
       as.character(as.list((strsplit(ids, '/'))[[1]])[[1]])
     # message(sprintf("%s", supplied_id))
@@ -95,7 +95,7 @@ altmetrics <-
     base_url <- "http://api.altmetric.com/v1/"
     args <- list(key = apikey)
     request <- httr::GET(paste0(base_url, ids), query = args, foptions)
-    
+
     results <-
       jsonlite::fromJSON(httr::content(request, as = "text"), flatten = TRUE)
 results <- rlist::list.flatten(results)
@@ -111,7 +111,7 @@ results
 #' @export
 altmetric_data <- function(alt_obj) {
   if (inherits(alt_obj, "altmetric"))  {
-    res <- data.frame(t(unlist(alt_obj)), stringsAsFactors = FALSE) 
+    res <- data.frame(t(unlist(alt_obj)), stringsAsFactors = FALSE)
   }
   res
 }

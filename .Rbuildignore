@@ -8,3 +8,5 @@ cran-comments.md
 ^codecov\.yml$
 ^\.travis\.yml$
 ^appveyor\.yml$
+revdep
+README.Rmd
