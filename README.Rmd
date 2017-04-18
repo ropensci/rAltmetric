@@ -72,8 +72,9 @@ For a real world use-case, one might want to get metrics on multiple publication
 
 ```{r}
 library(rAltmetric)
-library(purrr)
 library(magrittr)
+library(purrr)
+
 
 ids <- list(c(
   "10.1038/nature09210",
