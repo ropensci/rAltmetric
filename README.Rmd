@@ -78,7 +78,6 @@ alm <- function(x) {
 
 z <- lapply(ids, alm) 
 results <- bind_rows(z) 
-knitr::kable(results)
 ```
 
 ## Further reading
@@ -88,7 +87,7 @@ knitr::kable(results)
 
 To cite package ‘rAltmetric’ in publications use:
 
-```coffee
+```r
   Karthik Ram (2017). rAltmetric: Retrieves altmerics data for any
   published paper from altmetrics.com. R package version 0.3.
   http://CRAN.R-project.org/package=rAltmetric
