@@ -3,3 +3,6 @@
 S3method(print,altmetric)
 export(altmetric_data)
 export(altmetrics)
+importFrom(httr,status_code)
+importFrom(httr,stop_for_status)
+importFrom(httr,warn_for_status)

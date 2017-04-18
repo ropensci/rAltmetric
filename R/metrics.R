@@ -10,6 +10,7 @@
 #' @param apikey Your API `key`. By default the package ships with a key, but mostly as a demo. If the key becomes overused, then it is likely that you will start to see API limit errors
 #' @param foptions Additional options for `httr`
 #' @param ... additional options
+#' @importFrom httr stop_for_status status_code warn_for_status
 #' @export
 #' @examples
 #' \dontrun{
@@ -40,50 +41,16 @@ altmetrics <-
       stop("No valid identfier found. See ?altmetrics for more help", call. =
              FALSE)
 
-
-    # If an altmetric id is not prefixed by "id", add it in.
-    if (!is.null(id)) {
-      prefix <- as.list((strsplit(id, '/'))[[1]])[[1]]
-      if (prefix != "id")
-        id <- paste0("id", "/", id)
-    }
-    # If an doi id is not prefixed by "id", add it in.
-    if (!is.null(doi)) {
-      prefix <- as.list((strsplit(doi, '/'))[[1]])[[1]]
-      if (prefix != "doi")
-        doi <- paste0("doi", "/", doi)
-    }
-
-    # If an isbn id is not prefixed by "id", add it in.
-    if (!is.null(isbn)) {
-      prefix <- as.list((strsplit(isbn, '/'))[[1]])[[1]]
-      if (prefix != "isbn")
-        isbn <- paste0("isbn", "/", isbn)
-    }
-
-    # If an uri id is not prefixed by "id", add it in.
-    if (!is.null(uri)) {
-      prefix <- as.list((strsplit(uri, '/'))[[1]])[[1]]
-      if (prefix != "uri")
-        uri <- paste0("uri", "/", uri)
-    }
+    # If any of the identifiers are not prefixed by that text:
+    if (!is.null(id)) id <- prefix_fix(id, "id")
+    if (!is.null(doi)) doi <- prefix_fix(doi, "doi")
+    if (!is.null(isbn)) isbn <- prefix_fix(isbn, "isbn")
+    if (!is.null(uri)) uri <- prefix_fix(uri, "uri")
+    if (!is.null(arxiv)) arxiv <- prefix_fix(arxiv, "arxiv")
+    if (!is.null(pmid)) pmid <- prefix_fix(pmid, "pmid")
 
 
-    # If an arXiv id is not prefixed by "arXiv", add it in.
-    if (!is.null(arXiv)) {
-      prefix <- as.list((strsplit(arXiv, ':|/'))[[1]])[[1]]
-      arXiv <-
-        paste0("arxiv", "/", as.list((strsplit(arXiv, ':|/'))[[1]])[[2]])
-    }
-    # If an pubmed id is not prefixed by "pmid", add it in.
-    if (!is.null(pmid)) {
-      prefix <- as.list((strsplit(pmid, '/'))[[1]])[[1]]
-      if (prefix != "pmid")
-        pmid <- paste0("pmid", "/", pmid)
-    }
-
-
-    # remove the identifiders that weren't specified
+    # remove the identifiers that weren't specified
     identifiers <- ee_compact(list(oid, id, doi, pmid, arXiv, isbn, uri))
 
 
@@ -118,12 +85,17 @@ altmetrics <-
     args <- list(key = apikey)
     request <-
       httr::GET(paste0(base_url, ids), query = args, foptions)
-
+    if(status_code(request) == 404) {
+    stop("No metrics found for object")
+    } else {
+    stop_for_status(request)
     results <-
       jsonlite::fromJSON(httr::content(request, as = "text"), flatten = TRUE)
     results <- rlist::list.flatten(results)
     class(results) <- "altmetric"
     results
+
+    }
   }
 
 
@@ -140,3 +112,10 @@ altmetric_data <- function(alt_obj) {
 #' @noRd
 ee_compact <- function(l)
   Filter(Negate(is.null), l)
+
+#' @noRd
+prefix_fix <- function(x, type = "doi") {
+        prefix <- as.list((strsplit(x, '/'))[[1]])[[1]]
+      if (prefix != type)
+        paste0(type, "/", x)
+}  
