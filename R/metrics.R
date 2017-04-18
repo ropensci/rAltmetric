@@ -46,7 +46,7 @@ altmetrics <-
     if (!is.null(doi)) doi <- prefix_fix(doi, "doi")
     if (!is.null(isbn)) isbn <- prefix_fix(isbn, "isbn")
     if (!is.null(uri)) uri <- prefix_fix(uri, "uri")
-    if (!is.null(arXiv)) arXiv <- prefix_fix(arXiv, "arxiv")
+    if (!is.null(arXiv)) arXiv <- prefix_fix(arXiv, "arXiv")
     if (!is.null(pmid)) pmid <- prefix_fix(pmid, "pmid")
 
 
@@ -79,7 +79,7 @@ altmetrics <-
 
      # message(sprintf("%s", supplied_id))
     if (!(supplied_id %in% acceptable_identifiers))
-      stop("Unknown identifier. Please use doi, pmid, isbn, uri, arxiv or id (for altmetric id).",
+      stop("Unknown identifier. Please use doi, pmid, isbn, uri, arXiv or id (for altmetric id).",
            call. = F)
     base_url <- "http://api.altmetric.com/v1/"
     args <- list(key = apikey)
