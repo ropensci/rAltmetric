@@ -2,7 +2,7 @@
 % Please edit documentation in R/metrics.R
 \name{altmetrics}
 \alias{altmetrics}
-\title{Title}
+\title{Query data from the Altmetric.com API}
 \usage{
 altmetrics(oid = NULL, id = NULL, doi = NULL, pmid = NULL,
   arXiv = NULL, apikey = getOption("altmetricKey"), foptions = list(),
@@ -26,7 +26,7 @@ altmetrics(oid = NULL, id = NULL, doi = NULL, pmid = NULL,
 \item{...}{additional options}
 }
 \description{
-Title
+Query data from the Altmetric.com API
 }
 \examples{
 z <- altmetrics(doi ='10.1038/480426a')

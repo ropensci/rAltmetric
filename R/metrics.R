@@ -1,4 +1,4 @@
-#' Title
+#' Query data from the Altmetric.com API
 #'
 #' @param oid  An object ID
 #' @param id An altmetric.com id for a scholarly paper
@@ -94,13 +94,14 @@ altmetrics <-
            call. = F)
     base_url <- "http://api.altmetric.com/v1/"
     args <- list(key = apikey)
-    request <- httr::GET(paste0(base_url, ids), query = args, foptions)
+    request <-
+      httr::GET(paste0(base_url, ids), query = args, foptions)
 
     results <-
       jsonlite::fromJSON(httr::content(request, as = "text"), flatten = TRUE)
-results <- rlist::list.flatten(results)
-class(results) <- "altmetric"
-results
+    results <- rlist::list.flatten(results)
+    class(results) <- "altmetric"
+    results
   }
 
 
@@ -117,4 +118,5 @@ altmetric_data <- function(alt_obj) {
 }
 
 #' @noRd
-ee_compact <- function(l) Filter(Negate(is.null), l)
+ee_compact <- function(l)
+  Filter(Negate(is.null), l)
