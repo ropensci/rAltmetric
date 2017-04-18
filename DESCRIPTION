@@ -1,10 +1,12 @@
 Package: rAltmetric
-Title: Retrieves Altmerics Data For Any Published Paper From Altmetric.com
+Title: Retrieves Altmerics Data For Any Published Paper From 'Altmetric.com'
 Version: 0.7.9000
 Authors@R: 'Karthik Ram <karthik.ram@gmail.com> [aut, cre]'
-Description: Provides a programmatic interface to the citation information and alternate metrics provided by Altmetric. Metrics include traditional bibliometric counts, and mentions on various social media.
+Description: Provides a programmatic interface to the citation information and alternate metrics provided by 'Altmetric'. Metrics include traditional bibliometric counts, and mentions on various social media.
 Depends: R (>= 3.3.2)
 License: MIT + file LICENSE
+URL: https://github.com/ropensci/rAltmetric
+BugReports: https://github.com/ropensci/rAltmetric/issues
 Encoding: UTF-8
 LazyData: true
 Imports:
@@ -12,8 +14,8 @@ Imports:
       jsonlite,
       rlist
 Suggests:
-  ggplot2,
-  testthat      ,
+    ggplot2,
+    testthat,
     covr,
     knitr,
     rmarkdown
