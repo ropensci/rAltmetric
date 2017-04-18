@@ -33,7 +33,9 @@ altmetrics(oid = NULL, id = NULL, doi = NULL, pmid = NULL,
 Query data from the Altmetric.com API
 }
 \examples{
+\dontrun{
 altmetrics(doi ='10.1038/480426a')
 # For ISBNs
 ib <- altmetrics(isbn = "978-3-319-25557-6")
+}
 }

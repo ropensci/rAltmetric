@@ -1,0 +1,12 @@
+---
+title: "Introduction to Altmetric"
+author: "Karthik Ram"
+date: "`r Sys.Date()`"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Vignette Title}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+This is a short vignette explaning how to use `rAltmetric`.

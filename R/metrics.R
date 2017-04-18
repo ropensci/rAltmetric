@@ -12,9 +12,11 @@
 #' @param ... additional options
 #' @export
 #' @examples
+#' \dontrun{
 #' altmetrics(doi ='10.1038/480426a')
 #' # For ISBNs
 #' ib <- altmetrics(isbn = "978-3-319-25557-6")
+#' }
 altmetrics <-
   function(oid = NULL,
            id = NULL,
@@ -126,9 +128,7 @@ altmetrics <-
 
 
 #' Returns a data.frame from an S3 object of class altmetric
-#'
 #' @param alt_obj An object of class altmetric
-#'
 #' @export
 altmetric_data <- function(alt_obj) {
   if (inherits(alt_obj, "altmetric"))  {
