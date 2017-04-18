@@ -39,4 +39,10 @@ results <- pmap_df(ids, alm)
 # This results in a data.frame with one row per identifier.
 ```
 
+You can now see some citation data for these papers.
+
+```{r}
+library(dplyr)
+knitr::kable(results %>% select(title, doi,  starts_with("cited")))
+```
 

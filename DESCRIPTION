@@ -15,7 +15,7 @@ Imports:
       jsonlite,
       rlist
 Suggests:
-    ggplot2,
+    dplyr,
     testthat,
     covr,
     knitr,
