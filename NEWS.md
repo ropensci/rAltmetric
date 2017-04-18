@@ -1,8 +1,10 @@
 # rAltmetric 0.7.9000
+------------------
 
 * Updated package after a super long time to using `httr` instead of `RCurl`
 * Simplfied converting lists →  data.frames
-* Made everything tidyverse friendly
+* Added support for ISBN and URIs
+* Removed plot method since it was not useful or generalizable to various identifiers
 
 # rAltmetric 0.6
 ------------------

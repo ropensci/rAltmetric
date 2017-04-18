@@ -1,12 +1,12 @@
 #' Query data from the Altmetric.com API
 #'
-#' @param oid  An object ID
-#' @param id An altmetric.com id for a scholarly paper
-#' @param doi A DOI
-#' @param pmid A pubmed ID
-#' @param arXiv An Arxiv id.
-#' @param isbn ISBN
-#' @param uri Any URI
+#' @param oid  An object ID (assigned internally by Altmetric)
+#' @param id An altmetric.com id for a scholarly product
+#' @param doi A persistent identifier for a scholarly product
+#' @param pmid An is for any article indexed in Pubmed. PubMed accesses the MEDLINE database of references and abstracts on life sciences and biomedical topics
+#' @param arXiv  A valid id from arXiv. The arXiv is a repository of preprints in the fields of mathematics, physics, astronomy, computer science, quantitative biology, statistics, and quantitative finance.
+#' @param isbn A International Standard Book Number (ISBN)
+#' @param uri A Uniform Resource Identifier such as webpage
 #' @param apikey Your API `key`. By default the package ships with a key, but mostly as a demo. If the key becomes overused, then it is likely that you will start to see API limit errors
 #' @param foptions Additional options for `httr`
 #' @param ... additional options

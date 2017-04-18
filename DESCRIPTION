@@ -1,7 +1,8 @@
 Package: rAltmetric
 Title: Retrieves Altmerics Data For Any Published Paper From 'Altmetric.com'
 Version: 0.7.9000
-Authors@R: 'Karthik Ram <karthik.ram@gmail.com> [aut, cre]'
+Authors@R: person("Karthik", "Ram", email = "karthik.ram@gmail.com",
+                  role = c("aut", "cre"))
 Description: Provides a programmatic interface to the citation information and alternate metrics provided by 'Altmetric'. Metrics include traditional bibliometric counts, and mentions on various social media.
 Depends: R (>= 3.3.2)
 License: MIT + file LICENSE
