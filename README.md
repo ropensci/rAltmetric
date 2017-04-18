@@ -10,7 +10,9 @@ rAltmetric
 [![AppVeyor Build Status](https://ci.appveyor.com/api/projects/status/github/ropensci/rAltmetric?branch=master&svg=true)](https://ci.appveyor.com/project/ropensci/rAltmetric)
 [![Coverage Status](https://img.shields.io/codecov/c/github/ropensci/rAltmetric/master.svg)](https://codecov.io/github/ropensci/rAltmetric?branch=master)
 
-This package provides a way to programmatically retrieve altmetrics from various publication types (books, newsletters, articles, peer-reviewed papers and more) from [altmetric.com](http://altmetric.com). The package is really simple to use and only has two major functions: - `altmetrics` - Pass it a doi, isbn, uri, arxiv id or other to get metrics - `altmetric_data` Pass it the results from the previous call to get a tidy `data.frame`
+This package provides a way to programmatically retrieve altmetrics from various publication types (books, newsletters, articles, peer-reviewed papers and more) from [altmetric.com](http://altmetric.com). The package is really simple to use and only has two major functions:
+- `altmetrics` - Pass it a doi, isbn, uri, arxiv id or other to get metrics
+- `altmetric_data` Pass it the results from the previous call to get a tidy `data.frame`
 
 Questions, features requests and issues should go [here](https://github.com/ropensci/rAltmetric/issues/).
 
@@ -21,7 +23,7 @@ A stable version is available from CRAN. To install
 
 ``` r
 install.packages('rAltmetric')
-👷 or  the dev version
+ or the 👷 dev version
 devtools::install_github("ropensci/rAltmetric")
 ```
 
