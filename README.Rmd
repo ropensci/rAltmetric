@@ -19,7 +19,8 @@ knitr::opts_chunk$set(
 
 ![](http://cranlogs.r-pkg.org/badges/rAltmetric)  
 [![Travis-CI Build Status](https://travis-ci.org/ropensci/rAltmetric.svg?branch=master)](https://travis-ci.org/ropensci/rAltmetric)    
-[![AppVeyor Build Status](https://ci.appveyor.com/api/projects/status/github/ropensci/rAltmetric?branch=master&svg=true)](https://ci.appveyor.com/project/ropensci/rAltmetric)
+[![AppVeyor Build Status](https://ci.appveyor.com/api/projects/status/github/ropensci/rAltmetric?branch=master&svg=true)](https://ci.appveyor.com/project/ropensci/rAltmetric)  
+[![Coverage Status](https://img.shields.io/codecov/c/github/ropensci/rAltmetric/master.svg)](https://codecov.io/github/ropensci/rAltmetric?branch=master)
 
 
 This package provides a way to programmatically retrieve altmetric data from [altmetric.com](http://altmetric.com) for any publication with the appropriate identifer. The package is really simple to use and only has two major functions: One (`altmetrics()`) to download metrics and another (`altmetric_data()`) to extract the data into a `data.frame`. It also includes generic S3 methods to plot/print metrics for any altmetric object.
