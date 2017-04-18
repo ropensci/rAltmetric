@@ -12,9 +12,9 @@ test_that("str_length is number of characters", {
 
 context("Testing helpers")
 
-test_that("Helper functions do as expected") {
+test_that("Helper functions do as expected", {
   # This will test that compact does remove NULL
   expect_equal(length(ee_compact(list(a = 1, b = NULL, c = 5))), 2)
   # This will test that prefix_fix actually adds a prefix of text/
   expect_equal(nchar(prefix_fix("1", "doi")), 5)
-}
+})

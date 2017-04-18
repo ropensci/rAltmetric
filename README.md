@@ -10,7 +10,7 @@ rAltmetric
 [![AppVeyor Build Status](https://ci.appveyor.com/api/projects/status/github/ropensci/rAltmetric?branch=master&svg=true)](https://ci.appveyor.com/project/ropensci/rAltmetric)
 [![Coverage Status](https://img.shields.io/codecov/c/github/ropensci/rAltmetric/master.svg)](https://codecov.io/github/ropensci/rAltmetric?branch=master)
 
-This package provides a way to programmatically retrieve altmetric data from [altmetric.com](http://altmetric.com) for any publication with the appropriate identifer. The package is really simple to use and only has two major functions: One (`altmetrics()`) to download metrics and another (`altmetric_data()`) to extract the data into a `data.frame`. It also includes generic S3 methods to plot/print metrics for any altmetric object.
+This package provides a way to programmatically retrieve altmetrics from various publication types (books, newsletters, articles, peer-reviewed papers and more) from [altmetric.com](http://altmetric.com). The package is really simple to use and only has two major functions: - `altmetrics` - Pass it a doi, isbn, uri, arxiv id or other to get metrics - `altmetric_data` Pass it the results from the previous call to get a tidy `data.frame`
 
 Questions, features requests and issues should go [here](https://github.com/ropensci/rAltmetric/issues/).
 
@@ -21,9 +21,7 @@ A stable version is available from CRAN. To install
 
 ``` r
 install.packages('rAltmetric')
-
-or install the development version
-
+👷 or  the dev version
 devtools::install_github("ropensci/rAltmetric")
 ```
 
@@ -33,7 +31,7 @@ Quick Tutorial
 Obtaining metrics
 -----------------
 
-There was a recent paper by [Acuna et al](http://www.nature.com/news/2010/100616/full/465860a.html) that received a lot of attention on Twitter. What was the impact of that paper?
+There was a 2010 paper by [Acuna et al](http://www.nature.com/news/2010/100616/full/465860a.html) that received a lot of attention on Twitter. What was the impact of that paper?
 
 ``` r
 library(rAltmetric)
