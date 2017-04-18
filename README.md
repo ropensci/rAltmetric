@@ -129,6 +129,16 @@ For a real world use-case, one might want to get metrics on multiple publication
 ``` r
 library(rAltmetric)
 library(purrr)
+library(magrittr)
+#> 
+#> Attaching package: 'magrittr'
+#> The following object is masked from 'package:purrr':
+#> 
+#>     set_names
+#> The following object is masked from 'package:tidyr':
+#> 
+#>     extract
+
 ids <- list(c(
   "10.1038/nature09210",
   "10.1126/science.1187820",
