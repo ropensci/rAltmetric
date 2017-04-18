@@ -4,7 +4,7 @@
 #' @param id An altmetric.com id for a scholarly product
 #' @param doi A persistent identifier for a scholarly product
 #' @param pmid An is for any article indexed in Pubmed. PubMed accesses the MEDLINE database of references and abstracts on life sciences and biomedical topics
-#' @param arXiv  A valid id from arXiv. The arXiv is a repository of preprints in the fields of mathematics, physics, astronomy, computer science, quantitative biology, statistics, and quantitative finance.
+#' @param arxiv  A valid id from arxiv. The arxiv is a repository of preprints in the fields of mathematics, physics, astronomy, computer science, quantitative biology, statistics, and quantitative finance.
 #' @param isbn A International Standard Book Number (ISBN)
 #' @param uri A Uniform Resource Identifier such as webpage
 #' @param apikey Your API `key`. By default the package ships with a key, but mostly as a demo. If the key becomes overused, then it is likely that you will start to see API limit errors
@@ -23,7 +23,7 @@ altmetrics <-
            id = NULL,
            doi = NULL,
            pmid = NULL,
-           arXiv = NULL,
+           arxiv = NULL,
            isbn = NULL,
            uri = NULL,
            apikey = getOption('altmetricKey'),
@@ -32,12 +32,12 @@ altmetrics <-
     if (is.null(apikey))
       apikey <- '37c9ae22b7979124ea650f3412255bf9'
 
-    acceptable_identifiers <- c("doi", "arXiv", "id", "pmid", "isbn", "uri")
+    acceptable_identifiers <- c("doi", "arxiv", "id", "pmid", "isbn", "uri")
     # If you start hitting rate limits, email support@altmetric.com
     # to get your own key.
 
 
-    if (all(sapply(list(oid, doi, pmid, arXiv, isbn, uri), is.null)))
+  if (all(sapply(list(oid, doi, pmid, arxiv, isbn, uri), is.null)))
       stop("No valid identfier found. See ?altmetrics for more help", call. =
              FALSE)
 
@@ -46,12 +46,11 @@ altmetrics <-
     if (!is.null(doi)) doi <- prefix_fix(doi, "doi")
     if (!is.null(isbn)) isbn <- prefix_fix(isbn, "isbn")
     if (!is.null(uri)) uri <- prefix_fix(uri, "uri")
-    if (!is.null(arXiv)) arXiv <- prefix_fix(arXiv, "arXiv")
+    if (!is.null(arxiv)) arxiv <- prefix_fix(arxiv, "arXiv")
     if (!is.null(pmid)) pmid <- prefix_fix(pmid, "pmid")
 
-
     # remove the identifiers that weren't specified
-    identifiers <- ee_compact(list(oid, id, doi, pmid, arXiv, isbn, uri))
+    identifiers <- ee_compact(list(oid, id, doi, pmid, arxiv, isbn, uri))
 
 
     # If user specifies more than one at once, then throw an error
@@ -67,28 +66,22 @@ altmetrics <-
       ids <- identifiers[[1]]
     }
 
-    # Fix arXiv
-    test <- strsplit(ids, ":")
-    if (length(test[[1]]) == 2) {
-      ids <-
-        paste0(as.list(strsplit(ids, ":")[[1]])[[1]], "/", as.list(strsplit(ids, ":")[[1]])[[2]])
-    }
 
     supplied_id <-
       as.character(as.list((strsplit(ids, '/'))[[1]])[[1]])
 
      # message(sprintf("%s", supplied_id))
     if (!(supplied_id %in% acceptable_identifiers))
-      stop("Unknown identifier. Please use doi, pmid, isbn, uri, arXiv or id (for altmetric id).",
+      stop("Unknown identifier. Please use doi, pmid, isbn, uri, arxiv or id (for altmetric id).",
            call. = F)
     base_url <- "http://api.altmetric.com/v1/"
     args <- list(key = apikey)
     request <-
       httr::GET(paste0(base_url, ids), query = args, foptions)
-    if(status_code(request) == 404) {
+    if(httr::status_code(request) == 404) {
     stop("No metrics found for object")
     } else {
-    warn_for_status(request)
+    httr::warn_for_status(request)
     results <-
       jsonlite::fromJSON(httr::content(request, as = "text"), flatten = TRUE)
     results <- rlist::list.flatten(results)
@@ -114,8 +107,20 @@ ee_compact <- function(l)
   Filter(Negate(is.null), l)
 
 #' @noRd
-prefix_fix <- function(x, type = "doi") {
-        prefix <- as.list((strsplit(x, '/'))[[1]])[[1]]
-      if (prefix != type)
-        paste0(type, "/", x)
+prefix_fix <- function(x = NULL, type = "doi") {
+  if(is.null(x))
+      stop("Some identifier required")
+
+  # Check for arXiv and arxiv
+  type2 <- tolower(type)
+  val <- c(grep(type, x), grep(type2, x))
+
+  if(any(val == 1)) {
+    # lose the prefix and grab the ID
+    id <-  strsplit(x, ":")[[1]][2]
+    res <- paste0(tolower(type),"/", id)
+  } else {
+    res <- paste0(tolower(type),"/", x)
+  }
+  res
 }

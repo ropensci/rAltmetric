@@ -88,8 +88,12 @@
 
 alm &lt;-<span class="st"> </span><span class="cf">function</span>(x)  <span class="kw"><a href="../reference/altmetrics.html">altmetrics</a></span>(<span class="dt">doi =</span> x) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw"><a href="../reference/altmetric_data.html">altmetric_data</a></span>()
 
-results &lt;-<span class="st"> </span><span class="kw">pmap_df</span>(ids, alm)
-<span class="co"># This results in a data.frame with one row per identifier.</span></code></pre></div>
+results &lt;-<span class="st"> </span><span class="kw">pmap_df</span>(ids, alm)</code></pre></div>
+<pre><code>## doi</code></pre>
+<pre><code>## doi
+## doi
+## doi</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># This results in a data.frame with one row per identifier.</span></code></pre></div>
 <p>You can now see some citation data for these papers.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(dplyr)</code></pre></div>
 <pre><code>## 

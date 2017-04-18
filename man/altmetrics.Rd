@@ -5,7 +5,7 @@
 \title{Query data from the Altmetric.com API}
 \usage{
 altmetrics(oid = NULL, id = NULL, doi = NULL, pmid = NULL,
-  arXiv = NULL, isbn = NULL, uri = NULL,
+  arxiv = NULL, isbn = NULL, uri = NULL,
   apikey = getOption("altmetricKey"), foptions = list(), ...)
 }
 \arguments{
@@ -17,7 +17,7 @@ altmetrics(oid = NULL, id = NULL, doi = NULL, pmid = NULL,
 
 \item{pmid}{An is for any article indexed in Pubmed. PubMed accesses the MEDLINE database of references and abstracts on life sciences and biomedical topics}
 
-\item{arXiv}{A valid id from arXiv. The arXiv is a repository of preprints in the fields of mathematics, physics, astronomy, computer science, quantitative biology, statistics, and quantitative finance.}
+\item{arxiv}{A valid id from arxiv. The arxiv is a repository of preprints in the fields of mathematics, physics, astronomy, computer science, quantitative biology, statistics, and quantitative finance.}
 
 \item{isbn}{A International Standard Book Number (ISBN)}
 

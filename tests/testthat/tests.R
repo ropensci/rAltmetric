@@ -8,7 +8,7 @@ test_that("str_length is number of characters", {
   expect_is(ib, "altmetric")
   expect_s3_class(z, "altmetric")
   expect_s3_class(altmetric_data(z), "data.frame")
-  aid <- altmetrics(arXiv = "1704.05017")
+  aid <- altmetrics(arxiv = "1704.05017")
   expect_s3_class(aid, "altmetric")
 })
 
