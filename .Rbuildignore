@@ -12,3 +12,4 @@ revdep
 README.Rmd
 ^docs$
 README_cache
+Makefile
