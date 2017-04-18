@@ -5,3 +5,6 @@ acuna.png
 cran-comments.md
 ^.*\.Rproj$
 ^\.Rproj\.user$
+^codecov\.yml$
+^\.travis\.yml$
+^appveyor\.yml$

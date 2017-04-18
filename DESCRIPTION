@@ -11,7 +11,8 @@ Imports:
       httr,
       jsonlite,
       rlist
-Suggests: 
+Suggests:
   ggplot2,
-  testthat      
+  testthat      ,
+    covr
 RoxygenNote: 6.0.1

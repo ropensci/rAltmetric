@@ -1,24 +1,30 @@
+---
+output: github_document
+---
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
+
+
+
 ![altmetric.com](altmetric_logo_title.png)
 
-rAltmetric
-==========
 
-![](http://cranlogs.r-pkg.org/badges/rAltmetric)
-[![Travis-CI Build Status](https://travis-ci.org/ropensci/rAltmetric.svg?branch=master)](https://travis-ci.org/ropensci/rAltmetric)
+# rAltmetric
+
+![](http://cranlogs.r-pkg.org/badges/rAltmetric)  
+[![Travis-CI Build Status](https://travis-ci.org/ropensci/rAltmetric.svg?branch=master)](https://travis-ci.org/ropensci/rAltmetric)    
 [![AppVeyor Build Status](https://ci.appveyor.com/api/projects/status/github/ropensci/rAltmetric?branch=master&svg=true)](https://ci.appveyor.com/project/ropensci/rAltmetric)
+
 
 This package provides a way to programmatically retrieve altmetric data from [altmetric.com](http://altmetric.com) for any publication with the appropriate identifer. The package is really simple to use and only has two major functions: One (`altmetrics()`) to download metrics and another (`altmetric_data()`) to extract the data into a `data.frame`. It also includes generic S3 methods to plot/print metrics for any altmetric object.
 
-Questions, features requests and issues should go [here](https://github.com/ropensci/rAltmetric/issues/).
+Questions, features requests and issues should go [here](https://github.com/ropensci/rAltmetric/issues/). 
 
-Installing the package
-======================
+# Installing the package
 
 A stable version is available from CRAN. To install
 
-``` r
+```r
 install.packages('rAltmetric')
 
 or install the development version
@@ -26,15 +32,14 @@ or install the development version
 devtools::install_github("ropensci/rAltmetric")
 ```
 
-Quick Tutorial
-==============
 
-Obtaining metrics
------------------
+# Quick Tutorial
 
+## Obtaining metrics
 There was a recent paper by [Acuna et al](http://www.nature.com/news/2010/100616/full/465860a.html) that received a lot of attention on Twitter. What was the impact of that paper?
 
-``` r
+
+```r
 library(rAltmetric)
 acuna <- altmetrics(doi = "10.1038/465860a")
 acuna
@@ -50,12 +55,12 @@ acuna
 #> cited_by_accounts_count    30
 ```
 
-Data
-----
 
+## Data
 To obtain the metrics in tabular form for further processing, run any object of class `altmetric` through `altmetric_data()` to get data that can easily be written to disk as a spreadsheet.
 
-``` r
+
+```r
 altmetric_data(acuna)
 #>                         title             doi     pmid
 #> 1 Metrics: Do metrics matter? 10.1038/465860a 20559361
@@ -115,17 +120,16 @@ altmetric_data(acuna)
 
 You can save these data into a clean spreadsheet format:
 
-``` r
+```r
 acuna_data <- altmetric_data(acuna)
 readr::write_csv(acuna_data, path = 'acuna_altmetrics.csv')
 ```
 
-Gathering metrics for many DOIs
-===============================
-
+# Gathering metrics for many DOIs
 For a real world use-case, one might want to get metrics on multiple publications. If so, just read them from a spreadsheet and `llply` through them like the example below.
 
-``` r
+
+```r
 library(rAltmetric)
 ids <- c(
     "10.1038/nature09210",
@@ -142,15 +146,14 @@ z <- lapply(ids, alm)
 results <- bind_rows(z) 
 ```
 
-Further reading
----------------
+## Further reading
+* [Metrics: Do metrics matter?](http://www.nature.com/news/2010/100616/full/465860a.html)
+* [The altmetrics manifesto](http://altmetrics.org/manifesto/)
 
--   [Metrics: Do metrics matter?](http://www.nature.com/news/2010/100616/full/465860a.html)
--   [The altmetrics manifesto](http://altmetrics.org/manifesto/)
 
 To cite package ‘rAltmetric’ in publications use:
 
-``` r
+```r
   Karthik Ram (2017). rAltmetric: Retrieves altmerics data for any
   published paper from altmetrics.com. R package version 0.3.
   http://CRAN.R-project.org/package=rAltmetric
@@ -166,5 +169,7 @@ altmetrics.com},
     url = {http://CRAN.R-project.org/package=rAltmetric},
   }
 ```
+
+
 
 [![](http://ropensci.org/public_images/github_footer.png)](http://ropensci.org)
