@@ -90,6 +90,84 @@ alm &lt;-<span class="st"> </span><span class="cf">function</span>(x)  <span cla
 
 results &lt;-<span class="st"> </span><span class="kw">pmap_df</span>(ids, alm)
 <span class="co"># This results in a data.frame with one row per identifier.</span></code></pre></div>
+<p>You can now see some citation data for these papers.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(dplyr)</code></pre></div>
+<pre><code>## 
+## Attaching package: 'dplyr'</code></pre>
+<pre><code>## The following objects are masked from 'package:purrr':
+## 
+##     contains, order_by</code></pre>
+<pre><code>## The following objects are masked from 'package:stats':
+## 
+##     filter, lag</code></pre>
+<pre><code>## The following objects are masked from 'package:base':
+## 
+##     intersect, setdiff, setequal, union</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">knitr<span class="op">::</span><span class="kw">kable</span>(results <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">select</span>(title, doi,  <span class="kw">starts_with</span>(<span class="st">"cited"</span>)))</code></pre></div>
+<table class="table">
+<thead><tr class="header">
+<th align="left">title</th>
+<th align="left">doi</th>
+<th align="left">cited_by_fbwalls_count</th>
+<th align="left">cited_by_feeds_count</th>
+<th align="left">cited_by_msm_count</th>
+<th align="left">cited_by_policies_count</th>
+<th align="left">cited_by_posts_count</th>
+<th align="left">cited_by_tweeters_count</th>
+<th align="left">cited_by_accounts_count</th>
+<th align="left">cited_by_rh_count</th>
+</tr></thead>
+<tbody>
+<tr class="odd">
+<td align="left">Coupled dynamics of body mass and population growth in response to environmental change</td>
+<td align="left">10.1038/nature09210</td>
+<td align="left">1</td>
+<td align="left">7</td>
+<td align="left">1</td>
+<td align="left">1</td>
+<td align="left">13</td>
+<td align="left">3</td>
+<td align="left">13</td>
+<td align="left">NA</td>
+</tr>
+<tr class="even">
+<td align="left">Stochastic Community Assembly Causes Higher Biodiversity in More Productive Environments</td>
+<td align="left">10.1126/science.1187820</td>
+<td align="left">NA</td>
+<td align="left">1</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">3</td>
+<td align="left">1</td>
+<td align="left">3</td>
+<td align="left">1</td>
+</tr>
+<tr class="odd">
+<td align="left">Why intraspecific trait variation matters in community ecology</td>
+<td align="left">10.1016/j.tree.2011.01.009</td>
+<td align="left">NA</td>
+<td align="left">2</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">11</td>
+<td align="left">7</td>
+<td align="left">9</td>
+<td align="left">NA</td>
+</tr>
+<tr class="even">
+<td align="left">Enemies Maintain Hyperdiverse Tropical Forests</td>
+<td align="left">10.1086/664183</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">3</td>
+<td align="left">2</td>
+<td align="left">3</td>
+<td align="left">1</td>
+</tr>
+</tbody>
+</table>
 </div>
   </div>
 
