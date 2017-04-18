@@ -36,7 +36,7 @@ A stable version is available from CRAN. To install
 
 ```r
 install.packages('rAltmetric')
- or the 👷 dev version
+# or the 👷 dev version
 devtools::install_github("ropensci/rAltmetric")
 ```
 
