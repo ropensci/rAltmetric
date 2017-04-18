@@ -9,19 +9,19 @@ altmetrics(oid = NULL, id = NULL, doi = NULL, pmid = NULL,
   apikey = getOption("altmetricKey"), foptions = list(), ...)
 }
 \arguments{
-\item{oid}{An object ID}
+\item{oid}{An object ID (assigned internally by Altmetric)}
 
-\item{id}{An altmetric.com id for a scholarly paper}
+\item{id}{An altmetric.com id for a scholarly product}
 
-\item{doi}{A DOI}
+\item{doi}{A persistent identifier for a scholarly product}
 
-\item{pmid}{A pubmed ID}
+\item{pmid}{An is for any article indexed in Pubmed. PubMed accesses the MEDLINE database of references and abstracts on life sciences and biomedical topics}
 
-\item{arXiv}{An Arxiv id.}
+\item{arXiv}{A valid id from arXiv. The arXiv is a repository of preprints in the fields of mathematics, physics, astronomy, computer science, quantitative biology, statistics, and quantitative finance.}
 
-\item{isbn}{ISBN}
+\item{isbn}{A International Standard Book Number (ISBN)}
 
-\item{uri}{Any URI}
+\item{uri}{A Uniform Resource Identifier such as webpage}
 
 \item{apikey}{Your API `key`. By default the package ships with a key, but mostly as a demo. If the key becomes overused, then it is likely that you will start to see API limit errors}
 
