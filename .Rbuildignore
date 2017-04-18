@@ -10,3 +10,5 @@ cran-comments.md
 ^appveyor\.yml$
 revdep
 README.Rmd
+^docs$
+README_cache
