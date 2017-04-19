@@ -1,1 +1,7 @@
-Updated dependencies on the package (primarily switched from RCurl to httr since the package was submitted before httr). Also fixed several small bugs and added new functionality to support new types of identifiers from the Altmetric API.
+Kurt Hornik writes: Can you pls add some description of 'Altmetric', and then
+
+  (see <http....> for more information)
+
+?
+
+Response: I have updated the description to reflect what types of data the service provides and have also included a link to the data provider.
