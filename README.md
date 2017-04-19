@@ -1,4 +1,14 @@
 
+[![Project Status: Active – The project has reached a stable, usable state and is being actively developed.](http://www.repostatus.org/badges/latest/active.svg)](http://www.repostatus.org/#active) [![Build Status](https://travis-ci.org/ropensci/rAltmetric.svg?branch=master)](https://travis-ci.org/ropensci/rAltmetric)
+
+------------------------------------------------------------------------
+
+[![minimal R version](https://img.shields.io/badge/R%3E%3D-3.3.2-6666ff.svg)](https://cran.r-project.org/) [![CRAN\_Status\_Badge](http://www.r-pkg.org/badges/version/rAltmetric)](https://cran.r-project.org/package=rAltmetric) [![packageversion](https://img.shields.io/badge/Package%20version-0.7.9000-orange.svg?style=flat-square)](commits/master)
+
+------------------------------------------------------------------------
+
+[![Last-changedate](https://img.shields.io/badge/last%20change-2017--04--19-yellowgreen.svg)](/commits/master)
+
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 ![altmetric.com](https://github.com/ropensci/rAltmetric/raw/master/altmetric_logo_title.png)
 
