@@ -3,7 +3,7 @@ Title: Retrieves Altmerics Data for Any Published Paper from 'Altmetric.com'
 Version: 0.7.0
 Authors@R: person("Karthik", "Ram", email = "karthik.ram@gmail.com",
                   role = c("aut", "cre"))
-Description: Provides a programmatic interface to the citation information and alternate metrics provided by 'Altmetric'. Data from Altmetric allows researchers to immediately track the impact of their published work, without having to wait for citations. This allows for faster engagement with the audience interested in your work. For more information, visit <https://www.altmetric.com/>
+Description: Provides a programmatic interface to the citation information and alternate metrics provided by 'Altmetric'. Data from Altmetric allows researchers to immediately track the impact of their published work, without having to wait for citations. This allows for faster engagement with the audience interested in your work. For more information, visit <https://www.altmetric.com/>.
 Depends: R (>= 3.3.2)
 License: MIT + file LICENSE
 URL: https://github.com/ropensci/rAltmetric
