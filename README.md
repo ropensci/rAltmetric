@@ -7,7 +7,7 @@
 
 ------------------------------------------------------------------------
 
-[![Last-changedate](https://img.shields.io/badge/last%20change-2017--04--19-yellowgreen.svg)](/commits/master)
+[![Last-changedate](https://img.shields.io/badge/last%20change-2017--04--21-yellowgreen.svg)](/commits/master)
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 ![altmetric.com](https://github.com/ropensci/rAltmetric/raw/master/altmetric_logo_title.png)
@@ -139,6 +139,14 @@ For a real world use-case, one might want to get metrics on multiple publication
 ``` r
 library(rAltmetric)
 library(magrittr)
+#> 
+#> Attaching package: 'magrittr'
+#> The following object is masked from 'package:purrr':
+#> 
+#>     set_names
+#> The following object is masked from 'package:tidyr':
+#> 
+#>     extract
 library(purrr)
 
 

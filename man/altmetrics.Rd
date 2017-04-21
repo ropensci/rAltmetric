@@ -23,9 +23,9 @@ altmetrics(oid = NULL, id = NULL, doi = NULL, pmid = NULL,
 
 \item{uri}{A Uniform Resource Identifier such as webpage}
 
-\item{apikey}{Your API `key`. By default the package ships with a key, but mostly as a demo. If the key becomes overused, then it is likely that you will start to see API limit errors}
+\item{apikey}{Your API \code{key}. By default the package ships with a key, but mostly as a demo. If the key becomes overused, then it is likely that you will start to see API limit errors}
 
-\item{foptions}{Additional options for `httr`}
+\item{foptions}{Additional options for \code{httr}}
 
 \item{...}{additional options}
 }

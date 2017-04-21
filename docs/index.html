@@ -5,7 +5,7 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Retrieves Altmerics Data For Any Published Paper From 'Altmetric.com' • rAltmetric</title>
+<title>Retrieves Altmerics Data for Any Published Paper from 'Altmetric.com' • rAltmetric</title>
 <!-- jquery --><script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script><!-- Bootstrap --><link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script><!-- Font Awesome icons --><link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" crossorigin="anonymous">
 <!-- pkgdown --><link href="pkgdown.css" rel="stylesheet">
@@ -61,6 +61,11 @@
     
     
 <div class="contents">
+
+<hr>
+<p><a href="https://cran.r-project.org/"><img src="https://img.shields.io/badge/R%3E%3D-3.3.2-6666ff.svg" alt="minimal R version"></a> <a href="https://cran.r-project.org/package=rAltmetric"><img src="http://www.r-pkg.org/badges/version/rAltmetric" alt="CRAN_Status_Badge"></a> <a href="commits/master"><img src="https://img.shields.io/badge/Package%20version-0.7.9000-orange.svg?style=flat-square" alt="packageversion"></a></p>
+<hr>
+<p><a href="/commits/master"><img src="https://img.shields.io/badge/last%20change-2017--04--21-yellowgreen.svg" alt="Last-changedate"></a></p>
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 <div class="figure">
 <img src="https://github.com/ropensci/rAltmetric/raw/master/altmetric_logo_title.png" alt="altmetric.com"><p class="caption">altmetric.com</p>
@@ -91,6 +96,7 @@ devtools<span class="op">::</span><span class="kw">install_github</span>(<span c
 <p>There was a 2010 paper by <a href="http://www.nature.com/news/2010/100616/full/465860a.html">Acuna et al</a> that received a lot of attention on Twitter. What was the impact of that paper?</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(rAltmetric)
 acuna &lt;-<span class="st"> </span><span class="kw"><a href="reference/altmetrics.html">altmetrics</a></span>(<span class="dt">doi =</span> <span class="st">"10.1038/465860a"</span>)
+<span class="co">#&gt; doi</span>
 acuna
 <span class="co">#&gt; Altmetrics on: "Metrics: Do metrics matter?" with altmetric_id: 385053 published in Nature.</span>
 <span class="co">#&gt;                         stats</span>
@@ -191,6 +197,10 @@ ids &lt;-<span class="st"> </span><span class="kw">list</span>(<span class="kw">
 alm &lt;-<span class="st"> </span><span class="cf">function</span>(x)  <span class="kw"><a href="reference/altmetrics.html">altmetrics</a></span>(<span class="dt">doi =</span> x) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw"><a href="reference/altmetric_data.html">altmetric_data</a></span>()
 
 results &lt;-<span class="st"> </span><span class="kw">pmap_df</span>(ids, alm)
+<span class="co">#&gt; doi</span>
+<span class="co">#&gt; doi</span>
+<span class="co">#&gt; doi</span>
+<span class="co">#&gt; doi</span>
 <span class="co"># This results in a data.frame with one row per identifier.</span></code></pre></div>
 <div id="further-reading" class="section level2">
 <h2 class="hasAnchor">
@@ -235,6 +245,11 @@ altmetrics.com},
 <h2>Developers</h2>
 <ul class="list-unstyled">
 <li>Karthik Ram <br><small class="roles"> Author, maintainer </small> </li>
+</ul>
+<h2>Dev status</h2>
+<ul class="list-unstyled">
+<li><a href="http://www.repostatus.org/#active"><img src="http://www.repostatus.org/badges/latest/active.svg" alt="Project Status: Active – The project has reached a stable, usable state and is being actively developed."></a></li>
+<li><a href="https://travis-ci.org/ropensci/rAltmetric"><img src="https://travis-ci.org/ropensci/rAltmetric.svg?branch=master" alt="Build Status"></a></li>
 </ul>
 </div>
 
