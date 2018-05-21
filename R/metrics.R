@@ -77,7 +77,7 @@ altmetrics <-
     base_url <- "http://api.altmetric.com/v1/"
     args <- list(key = apikey)
     request <-
-      httr::GET(paste0(base_url, ids), query = args, foptions)
+      httr::GET(paste0(base_url, ids), query = args, foptions, httr::add_headers("user-agent" = "#rstats rAltmertic package https://github.com/ropensci/rAltmetric"))
     if(httr::status_code(request) == 404) {
     stop("No metrics found for object")
     } else {
