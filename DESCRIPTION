@@ -16,6 +16,7 @@ Imports:
       jsonlite,
       rlist
 Suggests:
+    spelling,
     dplyr,
     testthat,
     covr,
@@ -23,5 +24,6 @@ Suggests:
     magrittr,
     purrr,
     rmarkdown
-RoxygenNote: 6.0.1
+RoxygenNote: 6.0.1.9000
 VignetteBuilder: knitr
+Language: en-US
